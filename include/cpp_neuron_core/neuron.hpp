@@ -1,5 +1,6 @@
 #pragma once
 
+#include "cpp_neuron_core/neuron_model.hpp"
 #include "cpp_neuron_core/types.hpp"
 
 #include <string>
@@ -7,11 +8,15 @@
 
 namespace cpp_neuron {
 
-class PassiveNeuron {
+class PassiveNeuron : public NeuronModel {
 public:
     explicit PassiveNeuron(Cell cell);
 
-    void set_all_voltages(double voltage_mV);
+    const std::string& name() const override { return cell_.name; }
+    void set_all_voltages(double voltage_mV) override;
+    void add_current_pA(std::size_t compartment_index, double current_pA) override;
+    void clear_currents() override;
+    void step(double dt_ms) override;
     void step(double dt_ms, const std::vector<double>& injected_current_pA);
     void step_with_conductance(
         double dt_ms,
@@ -22,8 +27,9 @@ public:
     const Cell& cell() const { return cell_; }
     Cell& cell() { return cell_; }
 
-    double soma_voltage_mV() const;
-    std::size_t size() const { return cell_.compartments.size(); }
+    double voltage_mV(std::size_t compartment_index) const override;
+    double soma_voltage_mV() const override;
+    std::size_t size() const override { return cell_.compartments.size(); }
     void attach_nca_channels();
     void attach_irk_channels();
     void attach_kqt3_channels();
@@ -49,6 +55,7 @@ public:
 
 private:
     Cell cell_;
+    std::vector<double> injected_current_pA_;
 };
 
 }  // namespace cpp_neuron

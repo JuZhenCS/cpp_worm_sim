@@ -23,7 +23,7 @@
 
 namespace cpp_neuron {
 
-PassiveNeuron::PassiveNeuron(Cell cell) : cell_(std::move(cell)) {
+PassiveNeuron::PassiveNeuron(Cell cell) : cell_(std::move(cell)), injected_current_pA_(cell_.compartments.size(), 0.0) {
     if (cell_.compartments.empty()) {
         throw std::runtime_error("PassiveNeuron requires at least one compartment");
     }
@@ -33,6 +33,19 @@ void PassiveNeuron::set_all_voltages(double voltage_mV) {
     for (auto& compartment : cell_.compartments) {
         compartment.voltage_mV = voltage_mV;
     }
+}
+
+void PassiveNeuron::add_current_pA(std::size_t compartment_index, double current_pA) {
+    injected_current_pA_.at(compartment_index) += current_pA;
+}
+
+void PassiveNeuron::clear_currents() {
+    std::fill(injected_current_pA_.begin(), injected_current_pA_.end(), 0.0);
+}
+
+void PassiveNeuron::step(double dt_ms) {
+    step(dt_ms, injected_current_pA_);
+    clear_currents();
 }
 
 void PassiveNeuron::step(double dt_ms, const std::vector<double>& injected_current_pA) {
@@ -156,6 +169,10 @@ void PassiveNeuron::step_with_conductance(
         const double calcium_current_density = calcium_current_total_pA / (c.area_um2 * 10.0);
         c.cai_uM_per_um2 = calcium.step(c.cai_uM_per_um2, calcium_current_density, c.voltage_mV, dt_ms);
     }
+}
+
+double PassiveNeuron::voltage_mV(std::size_t compartment_index) const {
+    return cell_.compartments.at(compartment_index).voltage_mV;
 }
 
 double PassiveNeuron::soma_voltage_mV() const {

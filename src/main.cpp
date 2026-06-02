@@ -1,5 +1,5 @@
-#include "cpp_neuron_core/cell_loader.hpp"
 #include "cpp_neuron_core/neuron.hpp"
+#include "cpp_neuron_core/neuron_factory.hpp"
 #include "cpp_neuron_core/protocol.hpp"
 #include "cpp_neuron_core/recorder.hpp"
 
@@ -73,66 +73,33 @@ int main(int argc, char** argv) {
         const std::string diag_output = arg_value(argc, argv, "--diag-output", "");
         const std::string cell_path = arg_value(argc, argv, "--cell-file", data_dir + "/" + cell_name + ".csv");
 
-        auto cell = cpp_neuron::load_cell_csv(cell_path, cell_name);
-        cpp_neuron::PassiveNeuron neuron(std::move(cell));
-        if (has_arg(argc, argv, "--enable-nca")) {
-            neuron.attach_nca_channels();
-        }
-        if (has_arg(argc, argv, "--enable-irk")) {
-            neuron.attach_irk_channels();
-        }
-        if (has_arg(argc, argv, "--enable-kqt3")) {
-            neuron.attach_kqt3_channels();
-        }
-        if (has_arg(argc, argv, "--enable-egl2")) {
-            neuron.attach_egl2_channels();
-        }
-        if (has_arg(argc, argv, "--enable-shk1")) {
-            neuron.attach_shk1_channels();
-        }
-        if (has_arg(argc, argv, "--enable-kvs1")) {
-            neuron.attach_kvs1_channels();
-        }
-        if (has_arg(argc, argv, "--enable-shl1")) {
-            neuron.attach_shl1_channels();
-        }
-        if (has_arg(argc, argv, "--enable-egl36")) {
-            neuron.attach_egl36_channels();
-        }
-        if (has_arg(argc, argv, "--enable-egl19")) {
-            neuron.attach_egl19_channels();
-        }
-        if (has_arg(argc, argv, "--enable-cca1")) {
-            neuron.attach_cca1_channels();
-        }
-        if (has_arg(argc, argv, "--enable-unc2")) {
-            neuron.attach_unc2_channels();
-        }
-        if (has_arg(argc, argv, "--enable-calcium-internal")) {
-            neuron.enable_calcium_internal();
-        }
-        if (has_arg(argc, argv, "--enable-kcnl")) {
-            neuron.attach_kcnl_channels();
-        }
-        if (has_arg(argc, argv, "--enable-slo1-egl19")) {
-            neuron.attach_slo1_egl19_channels();
-        }
-        if (has_arg(argc, argv, "--enable-slo1-unc2")) {
-            neuron.attach_slo1_unc2_channels();
-        }
-        if (has_arg(argc, argv, "--enable-slo2-egl19")) {
-            neuron.attach_slo2_egl19_channels();
-        }
-        if (has_arg(argc, argv, "--enable-slo2-unc2")) {
-            neuron.attach_slo2_unc2_channels();
-        }
+        cpp_neuron::NeuronChannelConfig channels;
+        channels.enable_nca = has_arg(argc, argv, "--enable-nca");
+        channels.enable_irk = has_arg(argc, argv, "--enable-irk");
+        channels.enable_kqt3 = has_arg(argc, argv, "--enable-kqt3");
+        channels.enable_egl2 = has_arg(argc, argv, "--enable-egl2");
+        channels.enable_shk1 = has_arg(argc, argv, "--enable-shk1");
+        channels.enable_kvs1 = has_arg(argc, argv, "--enable-kvs1");
+        channels.enable_shl1 = has_arg(argc, argv, "--enable-shl1");
+        channels.enable_egl36 = has_arg(argc, argv, "--enable-egl36");
+        channels.enable_egl19 = has_arg(argc, argv, "--enable-egl19");
+        channels.enable_cca1 = has_arg(argc, argv, "--enable-cca1");
+        channels.enable_unc2 = has_arg(argc, argv, "--enable-unc2");
+        channels.enable_calcium_internal = has_arg(argc, argv, "--enable-calcium-internal");
+        channels.enable_kcnl = has_arg(argc, argv, "--enable-kcnl");
+        channels.enable_slo1_egl19 = has_arg(argc, argv, "--enable-slo1-egl19");
+        channels.enable_slo1_unc2 = has_arg(argc, argv, "--enable-slo1-unc2");
+        channels.enable_slo2_egl19 = has_arg(argc, argv, "--enable-slo2-egl19");
+        channels.enable_slo2_unc2 = has_arg(argc, argv, "--enable-slo2-unc2");
+
+        auto neuron = cpp_neuron::create_passive_neuron({cell_name, cell_path, channels});
 
         if (protocol == "iclamp") {
             auto p = default_iclamp(cell_name);
             p.amplitude_pA = arg_double(argc, argv, "--amp-pa", p.amplitude_pA);
             p.dt_ms = arg_double(argc, argv, "--dt-ms", p.dt_ms);
             p.tstop_ms = arg_double(argc, argv, "--tstop-ms", p.tstop_ms);
-            auto result = cpp_neuron::run_current_clamp_with_diagnostics(neuron, p);
+            auto result = cpp_neuron::run_current_clamp_with_diagnostics(*neuron, p);
             cpp_neuron::write_trace_csv(output, result.trace);
             if (!diag_output.empty()) {
                 cpp_neuron::write_channel_diagnostics_csv(diag_output, result.diagnostics);
@@ -142,7 +109,7 @@ int main(int argc, char** argv) {
             p.v_command_mV = arg_double(argc, argv, "--vcmd-mv", p.v_command_mV);
             p.dt_ms = arg_double(argc, argv, "--dt-ms", p.dt_ms);
             p.tstop_ms = arg_double(argc, argv, "--tstop-ms", p.tstop_ms);
-            auto result = cpp_neuron::run_seclamp_with_diagnostics(neuron, p);
+            auto result = cpp_neuron::run_seclamp_with_diagnostics(*neuron, p);
             cpp_neuron::write_trace_csv(output, result.trace);
             if (!diag_output.empty()) {
                 cpp_neuron::write_channel_diagnostics_csv(diag_output, result.diagnostics);
