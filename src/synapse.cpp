@@ -32,14 +32,16 @@ GradedChemicalSynapse::GradedChemicalSynapse(
     std::size_t post_compartment,
     ChemicalComponentType component_type,
     GradedChemicalSynapseConfig config,
-    bool active)
+    bool active,
+    std::string label)
     : pre_(std::move(pre)),
       post_(std::move(post)),
       pre_compartment_(pre_compartment),
       post_compartment_(post_compartment),
       component_type_(component_type),
       config_(config),
-      active_(active) {
+      active_(active),
+      label_(std::move(label)) {
     require_neuron(pre_, "Presynaptic");
     require_neuron(post_, "Postsynaptic");
     require_compartment(*pre_, pre_compartment_, "Presynaptic");
@@ -64,6 +66,7 @@ double GradedChemicalSynapse::update_and_current_pA(double dt_ms) {
         throw std::runtime_error("Chemical component dt_ms must be positive");
     }
     if (!active_) {
+        last_current_pA_ = 0.0;
         return 0.0;
     }
 
@@ -73,7 +76,14 @@ double GradedChemicalSynapse::update_and_current_pA(double dt_ms) {
     s_ = std::clamp(s_, 0.0, 1.0);
 
     // uS * mV = nA, so multiply by 1000 to inject pA into NeuronModel.
-    return kMicroSiemensMillivoltToPicoamp * config_.g_uS * s_ * (config_.e_rev_mV - v_post);
+    const double current = kMicroSiemensMillivoltToPicoamp * config_.g_uS * s_ * (config_.e_rev_mV - v_post);
+    last_current_pA_ = current;
+    const double abs_current = std::abs(current);
+    if (abs_current > peak_abs_current_pA_) {
+        peak_abs_current_pA_ = abs_current;
+        peak_current_pA_ = current;
+    }
+    return current;
 }
 
 void GradedChemicalSynapse::step(double dt_ms) {
@@ -92,13 +102,15 @@ GapJunction::GapJunction(
     std::size_t comp_a,
     std::size_t comp_b,
     GapJunctionConfig config,
-    bool active)
+    bool active,
+    std::string label)
     : a_(std::move(a)),
       b_(std::move(b)),
       comp_a_(comp_a),
       comp_b_(comp_b),
       config_(config),
-      active_(active) {
+      active_(active),
+      label_(std::move(label)) {
     require_neuron(a_, "Gap junction first");
     require_neuron(b_, "Gap junction second");
     require_compartment(*a_, comp_a_, "Gap junction first");
@@ -118,9 +130,20 @@ double GapJunction::current_to_a_pA() const {
 }
 
 void GapJunction::apply() {
+    (void)apply_and_current_to_a_pA();
+}
+
+double GapJunction::apply_and_current_to_a_pA() {
     const double i_to_a = current_to_a_pA();
+    last_current_to_a_pA_ = i_to_a;
+    const double abs_current = std::abs(i_to_a);
+    if (abs_current > peak_abs_current_pA_) {
+        peak_abs_current_pA_ = abs_current;
+        peak_current_to_a_pA_ = i_to_a;
+    }
     a_->add_current_pA(comp_a_, i_to_a);
     b_->add_current_pA(comp_b_, -i_to_a);
+    return i_to_a;
 }
 
 }  // namespace cpp_neuron

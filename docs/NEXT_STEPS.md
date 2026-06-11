@@ -10,6 +10,8 @@ Completed for SynapseModel-v0:
 4. Cook SI5 gap junctions are exported as ohmic coupling rows.
 5. C++ loaders build a `SynapseNetwork` from the exported CSV files.
 6. Full 302-neuron smoke test maps every neuron to one of the five multi-compartment templates.
+7. Full-network stability gates have been run at 1 s, 10 s, and 60 s with `dt=0.5 ms`.
+8. Stability output includes min/max voltage, peak chemical/gap currents, NaN count, exploding neuron list, and top current edges.
 
 Immediate next engineering steps:
 
@@ -19,8 +21,8 @@ Immediate next engineering steps:
 2. Add a small named circuit regression.
    Use a small subset such as AVA/RIM/AIY/VD-related nodes and verify loaded component counts, voltage ranges, and gap current conservation over a longer interval.
 
-3. Add a longer full-network stability run.
-   The current smoke test covers import and a short 10 ms integration. A useful next gate is 1 s with finite voltages/currents and printed min/max summaries.
+3. Add a stricter stability regression target.
+   The current 1 s/10 s/60 s gates are executable checks. A useful next gate is a committed expected-range test for min/max voltages and top current edge identities.
 
 4. Move shared CSV parsing helpers out of test code if another executable needs them.
    The production C++ loaders already parse synapse CSVs; `synapse_smoke.cpp` also parses the BAAIWorm reference CSV for test construction.
@@ -31,8 +33,11 @@ Immediate next engineering steps:
 Current validation commands:
 
 ```powershell
-cmake -S . -B build_synapse_tests
+cmake -S . -B build_synapse_tests -DCMAKE_BUILD_TYPE=Release
 cmake --build build_synapse_tests --target synapse_tests synapse_smoke
 .\build_synapse_tests\synapse_tests.exe
-.\build_synapse_tests\synapse_smoke.exe --data-dir "E:\1 PhD work\C.elegans simulation\code\C.elegans.network\synapse_v0" --template-data-dir "E:\1 PhD work\C.elegans simulation\code\cpp_worm_sim\data" --tstop-ms 10 --dt-ms 0.1
+.\build_synapse_tests\synapse_smoke.exe --tstop-ms 10 --dt-ms 0.1
+.\build_synapse_tests\synapse_smoke.exe --tstop-ms 1000 --dt-ms 0.5 --top-current-edges 10
+.\build_synapse_tests\synapse_smoke.exe --tstop-ms 10000 --dt-ms 0.5 --top-current-edges 10
+.\build_synapse_tests\synapse_smoke.exe --tstop-ms 60000 --dt-ms 0.5 --top-current-edges 10
 ```

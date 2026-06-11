@@ -1,4 +1,7 @@
 build/
+build*/
+cmake-build*/
+.idea/
 output/
 *.csv
 !data/**/*.csv

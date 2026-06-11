@@ -123,9 +123,8 @@ SynapseNetwork::StepStats SynapseNetwork::apply(double dt_ms) {
         stats.max_abs_chemical_current_pA = std::max(stats.max_abs_chemical_current_pA, std::abs(current));
     }
     for (auto& gap : gap_junctions) {
-        const double current = gap.current_to_a_pA();
+        const double current = gap.apply_and_current_to_a_pA();
         stats.max_abs_gap_current_pA = std::max(stats.max_abs_gap_current_pA, std::abs(current));
-        gap.apply();
     }
     return stats;
 }
@@ -163,7 +162,8 @@ std::vector<GradedChemicalSynapse> load_chemical_synapses_csv(
             post_compartment,
             parse_component_type(require_field(row, "component_type")),
             config,
-            true);
+            true,
+            require_field(row, "component_id"));
     }
     return synapses;
 }
@@ -191,7 +191,8 @@ std::vector<GapJunction> load_gap_junctions_csv(
             compartment_a,
             compartment_b,
             config,
-            true);
+            true,
+            require_field(row, "gap_id"));
     }
     return gaps;
 }

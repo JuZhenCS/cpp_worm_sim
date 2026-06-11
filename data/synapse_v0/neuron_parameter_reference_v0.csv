@@ -1,0 +1,303 @@
+baai_index,neuron,functional_group,parameter_reference,reference_cell,evidence
+1,I1L,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+2,I1R,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+3,I2L,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+4,I2R,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+5,I3,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+6,I4,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+7,I5,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+8,I6,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+9,M1,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+10,M2L,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+11,M2R,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+12,M3L,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+13,M3R,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+14,M4,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+15,M5,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+16,MCL,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+17,MCR,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+18,MI,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+19,NSML,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+20,NSMR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+21,ASIL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+22,ASIR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+23,ASJL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+24,ASJR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+25,AWAL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+26,AWAR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+27,ASGL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+28,ASGR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+29,AWBL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+30,AWBR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+31,ASEL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+32,ASER,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+33,ADFL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+34,ADFR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+35,AFDL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+36,AFDR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+37,AWCL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+38,AWCR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+39,ASKL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+40,ASKR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+41,ASHL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+42,ASHR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+43,ADLL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+44,ADLR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+45,BAGL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+46,BAGR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+47,URXL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+48,URXR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+49,ALNL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+50,ALNR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+51,PLNL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+52,PLNR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+53,SDQL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+54,SDQR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+55,AQR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+56,PQR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+57,ALML,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+58,ALMR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+59,AVM,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+60,PVM,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+61,PLML,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+62,PLMR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+63,FLPL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+64,FLPR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+65,DVA,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+66,PVDL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+67,PVDR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+68,ADEL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+69,ADER,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+70,PDEL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+71,PDER,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+72,PHAL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+73,PHAR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+74,PHBL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+75,PHBR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+76,PHCL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+77,PHCR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+78,IL2DL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+79,IL2DR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+80,IL2L,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+81,IL2R,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+82,IL2VL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+83,IL2VR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+84,CEPDL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+85,CEPDR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+86,CEPVL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+87,CEPVR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+88,URYDL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+89,URYDR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+90,URYVL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+91,URYVR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+92,OLLL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+93,OLLR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+94,OLQDL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+95,OLQDR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+96,OLQVL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+97,OLQVR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+98,IL1DL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+99,IL1DR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+100,IL1L,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+101,IL1R,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+102,IL1VL,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+103,IL1VR,sensory neuron,AWC,AWCL,BAAIWorm_Supplementary_Table_4
+104,AINL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+105,AINR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+106,AIML,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+107,AIMR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+108,RIH,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+109,URBL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+110,URBR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+111,RIR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+112,AIYL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+113,AIYR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+114,AIAL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+115,AIAR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+116,AUAL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+117,AUAR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+118,AIZL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+119,AIZR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+120,RIS,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+121,ALA,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+122,PVQL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+123,PVQR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+124,ADAL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+125,ADAR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+126,RIFL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+127,RIFR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+128,BDUL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+129,BDUR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+130,PVR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+131,AVFL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+132,AVFR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+133,AVHL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+134,AVHR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+135,PVPL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+136,PVPR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+137,LUAL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+138,LUAR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+139,PVNL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+140,PVNR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+141,AVG,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+142,DVB,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+143,RIBL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+144,RIBR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+145,RIGL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+146,RIGR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+147,RMGL,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+148,RMGR,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+149,AIBL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+150,AIBR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+151,RICL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+152,RICR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+153,SAADL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+154,SAADR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+155,SAAVL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+156,SAAVR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+157,AVKL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+158,AVKR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+159,DVC,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+160,AVJL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+161,AVJR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+162,PVT,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+163,AVDL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+164,AVDR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+165,AVL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+166,PVWL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+167,PVWR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+168,RIAL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+169,RIAR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+170,RIML,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+171,RIMR,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+172,AVEL,command neuron,AVA,AVAL,BAAIWorm_Supplementary_Table_4
+173,AVER,command neuron,AVA,AVAL,BAAIWorm_Supplementary_Table_4
+174,RMFL,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+175,RMFR,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+176,RID,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+177,AVBL,command neuron,AVA,AVAL,BAAIWorm_Supplementary_Table_4
+178,AVBR,command neuron,AVA,AVAL,BAAIWorm_Supplementary_Table_4
+179,AVAL,command neuron,AVA,AVAL,BAAIWorm_Supplementary_Table_4
+180,AVAR,command neuron,AVA,AVAL,BAAIWorm_Supplementary_Table_4
+181,PVCL,command neuron,AVA,AVAL,BAAIWorm_Supplementary_Table_4
+182,PVCR,command neuron,AVA,AVAL,BAAIWorm_Supplementary_Table_4
+183,RIPL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+184,RIPR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+185,URADL,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+186,URADR,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+187,URAVL,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+188,URAVR,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+189,RMEL,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+190,RMER,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+191,RMED,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+192,RMEV,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+193,RMDDL,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+194,RMDDR,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+195,RMDL,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+196,RMDR,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+197,RMDVL,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+198,RMDVR,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+199,RIVL,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+200,RIVR,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+201,RMHL,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+202,RMHR,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+203,SABD,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+204,SABVL,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+205,SABVR,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+206,SMDDL,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+207,SMDDR,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+208,SMDVL,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+209,SMDVR,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+210,SMBDL,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+211,SMBDR,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+212,SMBVL,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+213,SMBVR,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+214,SIBDL,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+215,SIBDR,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+216,SIBVL,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+217,SIBVR,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+218,SIADL,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+219,SIADR,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+220,SIAVL,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+221,SIAVR,head motor neuron,RIM,RIML,BAAIWorm_Supplementary_Table_4
+222,DA01,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+223,DA02,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+224,DA03,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+225,DA04,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+226,DA05,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+227,DA06,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+228,DA07,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+229,DA08,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+230,DA09,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+231,PDA,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+232,DB01,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+233,DB02,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+234,DB03,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+235,DB04,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+236,DB05,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+237,DB06,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+238,DB07,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+239,AS01,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+240,AS02,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+241,AS03,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+242,AS04,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+243,AS05,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+244,AS06,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+245,AS07,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+246,AS08,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+247,AS09,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+248,AS10,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+249,AS11,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+250,PDB,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+251,DD01,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+252,DD02,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+253,DD03,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+254,DD04,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+255,DD05,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+256,DD06,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+257,VA01,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+258,VA02,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+259,VA03,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+260,VA04,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+261,VA05,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+262,VA06,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+263,VA07,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+264,VA08,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+265,VA09,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+266,VA10,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+267,VA11,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+268,VA12,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+269,VB01,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+270,VB02,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+271,VB03,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+272,VB04,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+273,VB05,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+274,VB06,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+275,VB07,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+276,VB08,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+277,VB09,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+278,VB10,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+279,VB11,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+280,VD01,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+281,VD02,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+282,VD03,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+283,VD04,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+284,VD05,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+285,VD06,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+286,VD07,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+287,VD08,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+288,VD09,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+289,VD10,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+290,VD11,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+291,VD12,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+292,VD13,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+293,CANL,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+294,CANR,interneuron,AIY,AIYL,BAAIWorm_Supplementary_Table_4
+295,HSNL,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+296,HSNR,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+297,VC01,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+298,VC02,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+299,VC03,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+300,VC04,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+301,VC05,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4
+302,VC06,body motor neuron,VD5,VD05,BAAIWorm_Supplementary_Table_4

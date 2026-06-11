@@ -1,0 +1,58 @@
+{
+  "data_sources": {
+    "fenyves_s1": "E:\\1 PhD work\\C.elegans simulation\\code\\C.elegans.network\\fenyves 2020 S Data\\S1_Data.xlsx",
+    "cook_si2": "E:\\1 PhD work\\C.elegans simulation\\code\\C.elegans.network\\cook 2019 SI\\41586_2019_1352_MOESM6_ESM SI2.xlsx",
+    "cook_si5": "E:\\1 PhD work\\C.elegans simulation\\code\\C.elegans.network\\cook 2019 SI\\41586_2019_1352_MOESM9_ESM SI5.xlsx"
+  },
+  "chemical_connections": 5001,
+  "chemical_connections_by_source": {
+    "cook_si5_and_fenyves": 3508,
+    "cook_si5_only": 1363,
+    "fenyves_only": 130
+  },
+  "chemical_connections_by_class": {
+    "neuron_to_neuron": 3831,
+    "neuron_to_non_neuron_or_muscle": 1170
+  },
+  "chemical_connections_active_in_v0": 5001,
+  "chemical_connections_by_raw_fenyves_polarity": {
+    "no pred": 1422,
+    "missing": 1363,
+    "+": 1314,
+    "complex": 477,
+    "-": 425
+  },
+  "chemical_connections_by_effective_polarity": {
+    "-": 3210,
+    "+": 1314,
+    "complex": 477
+  },
+  "chemical_connections_by_polarity_policy": {
+    "fenyves_sign_prediction": 2131,
+    "fenyves_no_pred_default_inhibitory": 1422,
+    "missing_fenyves_default_inhibitory": 1363,
+    "fenyves_only_connection_with_sign": 85
+  },
+  "chemical_components": 5478,
+  "chemical_components_neuron_neuron": 4308,
+  "chemical_components_by_type": {
+    "inh": 3687,
+    "exc": 1791
+  },
+  "gap_junctions": 1093,
+  "weight_normalization": "log1p_max",
+  "neuron_parameter_references": {
+    "VD5": 89,
+    "AWC": 82,
+    "AIY": 80,
+    "RIM": 43,
+    "AVA": 8
+  },
+  "neuron_functional_groups": {
+    "body motor neuron": 89,
+    "sensory neuron": 82,
+    "interneuron": 80,
+    "head motor neuron": 43,
+    "command neuron": 8
+  }
+}

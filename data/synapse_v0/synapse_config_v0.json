@@ -1,0 +1,40 @@
+{
+  "chemical": {
+    "structure_source": "Cook2019_SI5_hermaphrodite_chemical",
+    "polarity_source": "Fenyves2020_S1_Data_sheet_5_sign_prediction",
+    "fenyves_only_policy": "add_connection_with_fenyves_weight_and_sign",
+    "weight_normalization": "log1p_max",
+    "g0_exc_uS": 0.00049,
+    "g0_inh_uS": 0.0002,
+    "tau_ms": 10.0,
+    "v_half_mV": -20.0,
+    "k_s_mV": 5.0,
+    "E_exc_mV": 30.0,
+    "E_inh_mV": -70.0,
+    "complex_rho_exc": 0.5,
+    "complex_rho_inh": 0.5,
+    "no_pred_policy": "default_inhibitory",
+    "missing_fenyves_policy": "default_inhibitory"
+  },
+  "gap": {
+    "weight_normalization": "log1p_max",
+    "g0_gap_uS": 0.0001
+  },
+  "neuron_parameter_reference": {
+    "source": "BAAIWorm Supplementary Table 4",
+    "representatives": {
+      "AWC": "AWCL.json",
+      "AIY": "AIYL.json",
+      "AVA": "AVAL.json",
+      "RIM": "RIML.json",
+      "VD5": "VD05.json"
+    }
+  },
+  "disabled_in_v0": {
+    "harris_soft_prior": true,
+    "wang_transmitter_metadata": true,
+    "monoamine_modulation": true,
+    "stdp": true,
+    "individual_synapse_level_polarity": true
+  }
+}

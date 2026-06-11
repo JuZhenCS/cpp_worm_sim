@@ -56,6 +56,14 @@ public:
 private:
     Cell cell_;
     std::vector<double> injected_current_pA_;
+    std::vector<double> zero_conductance_nS_;
+    std::vector<double> zero_reversal_mV_;
+    std::vector<double> matrix_;
+    std::vector<double> inverse_matrix_;
+    std::vector<double> rhs_;
+    std::vector<double> solution_;
+    double cached_inverse_dt_ms_ = 0.0;
+    bool cached_inverse_valid_ = false;
 };
 
 }  // namespace cpp_neuron

@@ -44,3 +44,8 @@ target_compile_definitions(synapse_tests PRIVATE CPP_WORM_SIM_SOURCE_DIR="${CMAK
 add_executable(synapse_smoke tests/synapse_smoke.cpp)
 target_link_libraries(synapse_smoke PRIVATE cpp_neuron_core)
 target_compile_definitions(synapse_smoke PRIVATE CPP_WORM_SIM_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
+
+find_package(OpenMP QUIET)
+if(OpenMP_CXX_FOUND)
+    target_link_libraries(synapse_smoke PRIVATE OpenMP::OpenMP_CXX)
+endif()

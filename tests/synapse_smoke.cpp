@@ -6,6 +6,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <fstream>
+#include <iomanip>
 #include <iostream>
 #include <limits>
 #include <map>
@@ -16,6 +17,10 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
+
+#ifdef _OPENMP
+#include <omp.h>
+#endif
 
 namespace {
 
@@ -237,12 +242,31 @@ double arg_double(int argc, char** argv, const std::string& name, double fallbac
     return std::stod(arg_value(argc, argv, name, std::to_string(fallback)));
 }
 
+std::size_t arg_size(int argc, char** argv, const std::string& name, std::size_t fallback) {
+    return static_cast<std::size_t>(std::stoull(arg_value(argc, argv, name, std::to_string(fallback))));
+}
+
+struct ExplodingNeuron {
+    std::string name;
+    double time_ms = 0.0;
+    double voltage_mV = 0.0;
+};
+
+struct TopCurrentEdge {
+    std::string type;
+    std::string label;
+    double peak_abs_current_pA = 0.0;
+    double peak_current_pA = 0.0;
+};
+
 }  // namespace
 
 int main(int argc, char** argv) {
     try {
-        const std::string data_dir = arg_value(argc, argv, "--data-dir", "../C.elegans.network/synapse_v0");
-        const std::string chemical_csv = arg_value(argc, argv, "--chemical-csv", data_dir + "/chemical_components_v0.csv");
+        const std::string data_dir =
+            arg_value(argc, argv, "--data-dir", std::string(CPP_WORM_SIM_SOURCE_DIR) + "/data/synapse_v0");
+        const std::string chemical_csv =
+            arg_value(argc, argv, "--chemical-csv", data_dir + "/chemical_components_neuron_neuron_v0.csv");
         const std::string gap_csv = arg_value(argc, argv, "--gap-csv", data_dir + "/gap_junctions_v0.csv");
         const std::string neuron_reference_csv =
             arg_value(argc, argv, "--neuron-reference-csv", data_dir + "/neuron_parameter_reference_v0.csv");
@@ -250,6 +274,8 @@ int main(int argc, char** argv) {
             arg_value(argc, argv, "--template-data-dir", std::string(CPP_WORM_SIM_SOURCE_DIR) + "/data");
         const double dt_ms = arg_double(argc, argv, "--dt-ms", 0.1);
         const double tstop_ms = arg_double(argc, argv, "--tstop-ms", 10.0);
+        const double explode_voltage_mV = arg_double(argc, argv, "--explode-voltage-mv", 100.0);
+        const std::size_t top_current_edges = arg_size(argc, argv, "--top-current-edges", 10);
         const std::size_t steps = static_cast<std::size_t>(std::ceil(tstop_ms / dt_ms));
 
         std::set<std::string> names;
@@ -259,7 +285,9 @@ int main(int argc, char** argv) {
 
         cpp_neuron::NeuronIndex neurons;
         std::vector<std::shared_ptr<cpp_neuron::NeuronModel>> owned_neurons;
+        std::vector<std::string> owned_neuron_names;
         owned_neurons.reserve(names.size());
+        owned_neuron_names.reserve(names.size());
         std::map<std::string, std::size_t> parameter_reference_counts;
         std::map<std::string, std::size_t> functional_group_counts;
         std::size_t idx = 0;
@@ -279,6 +307,7 @@ int main(int argc, char** argv) {
             neuron->set_all_voltages(representative.initial_voltage_mV + 0.1 * (static_cast<double>(idx % 7) - 3.0));
             neurons.emplace(name, neuron);
             owned_neurons.push_back(std::move(neuron));
+            owned_neuron_names.push_back(name);
             ++parameter_reference_counts[reference.parameter_reference];
             ++functional_group_counts[reference.functional_group];
             ++idx;
@@ -291,26 +320,77 @@ int main(int argc, char** argv) {
         double max_chemical_current = 0.0;
         double max_gap_current = 0.0;
         std::size_t nan_count = 0;
+        std::vector<ExplodingNeuron> exploding_neurons;
+        std::vector<char> exploding_neuron_seen(owned_neurons.size(), 0);
+        std::vector<double> step_voltages(owned_neurons.size(), 0.0);
 
         for (std::size_t step = 0; step < steps; ++step) {
-            for (const auto& neuron : owned_neurons) {
-                neuron->clear_currents();
+            const auto neuron_count = static_cast<std::ptrdiff_t>(owned_neurons.size());
+#ifdef _OPENMP
+#pragma omp parallel for schedule(static)
+#endif
+            for (std::ptrdiff_t neuron_idx = 0; neuron_idx < neuron_count; ++neuron_idx) {
+                owned_neurons[static_cast<std::size_t>(neuron_idx)]->clear_currents();
             }
             const auto stats = network.apply(dt_ms);
             max_chemical_current = std::max(max_chemical_current, stats.max_abs_chemical_current_pA);
             max_gap_current = std::max(max_gap_current, stats.max_abs_gap_current_pA);
-            for (const auto& neuron : owned_neurons) {
+            const double time_ms = static_cast<double>(step + 1) * dt_ms;
+
+            double step_min_voltage = std::numeric_limits<double>::infinity();
+            double step_max_voltage = -std::numeric_limits<double>::infinity();
+            std::size_t step_nan_count = 0;
+#ifdef _OPENMP
+#pragma omp parallel for schedule(static) reduction(min : step_min_voltage) reduction(max : step_max_voltage) \
+    reduction(+ : step_nan_count)
+#endif
+            for (std::ptrdiff_t neuron_idx = 0; neuron_idx < neuron_count; ++neuron_idx) {
+                const auto idx = static_cast<std::size_t>(neuron_idx);
+                const auto& neuron = owned_neurons[idx];
                 neuron->step(dt_ms);
                 const double v = neuron->soma_voltage_mV();
+                step_voltages[idx] = v;
                 if (!std::isfinite(v)) {
-                    ++nan_count;
+                    ++step_nan_count;
                     continue;
                 }
-                min_voltage = std::min(min_voltage, v);
-                max_voltage = std::max(max_voltage, v);
+                step_min_voltage = std::min(step_min_voltage, v);
+                step_max_voltage = std::max(step_max_voltage, v);
+            }
+            nan_count += step_nan_count;
+            min_voltage = std::min(min_voltage, step_min_voltage);
+            max_voltage = std::max(max_voltage, step_max_voltage);
+            for (std::size_t neuron_idx = 0; neuron_idx < owned_neurons.size(); ++neuron_idx) {
+                const double v = step_voltages[neuron_idx];
+                if ((!std::isfinite(v) || std::abs(v) > explode_voltage_mV) && !exploding_neuron_seen[neuron_idx]) {
+                    exploding_neuron_seen[neuron_idx] = 1;
+                    const auto& name = owned_neuron_names[neuron_idx];
+                    exploding_neurons.push_back({name, time_ms, v});
+                }
             }
         }
 
+        std::vector<TopCurrentEdge> current_edges;
+        current_edges.reserve(network.chemical_synapses.size() + network.gap_junctions.size());
+        for (const auto& synapse : network.chemical_synapses) {
+            current_edges.push_back(
+                {"chemical", synapse.label(), synapse.peak_abs_current_pA(), synapse.peak_current_pA()});
+        }
+        for (const auto& gap : network.gap_junctions) {
+            current_edges.push_back({"gap", gap.label(), gap.peak_abs_current_pA(), gap.peak_current_to_a_pA()});
+        }
+        std::sort(current_edges.begin(), current_edges.end(), [](const TopCurrentEdge& a, const TopCurrentEdge& b) {
+            return a.peak_abs_current_pA > b.peak_abs_current_pA;
+        });
+
+        std::cout << std::setprecision(10);
+        std::cout << "tstop_ms=" << tstop_ms << '\n';
+        std::cout << "dt_ms=" << dt_ms << '\n';
+#ifdef _OPENMP
+        std::cout << "openmp_threads=" << omp_get_max_threads() << '\n';
+#else
+        std::cout << "openmp_threads=1\n";
+#endif
         std::cout << "neurons=" << owned_neurons.size() << '\n';
         for (const auto& item : parameter_reference_counts) {
             std::cout << "parameter_reference_" << item.first << '=' << item.second << '\n';
@@ -325,8 +405,21 @@ int main(int argc, char** argv) {
         std::cout << "max_chemical_current_pA=" << max_chemical_current << '\n';
         std::cout << "max_gap_current_pA=" << max_gap_current << '\n';
         std::cout << "nan_count=" << nan_count << '\n';
+        std::cout << "explode_voltage_mV=" << explode_voltage_mV << '\n';
+        std::cout << "exploding_neurons=" << exploding_neurons.size() << '\n';
+        for (const auto& neuron : exploding_neurons) {
+            std::cout << "exploding_neuron name=" << neuron.name << " first_time_ms=" << neuron.time_ms
+                      << " voltage_mV=" << neuron.voltage_mV << '\n';
+        }
+        std::cout << "top_current_edges=" << std::min(top_current_edges, current_edges.size()) << '\n';
+        for (std::size_t edge_idx = 0; edge_idx < std::min(top_current_edges, current_edges.size()); ++edge_idx) {
+            const auto& edge = current_edges[edge_idx];
+            std::cout << "top_current_edge rank=" << edge_idx + 1 << " type=" << edge.type << " label=" << edge.label
+                      << " peak_abs_current_pA=" << edge.peak_abs_current_pA
+                      << " peak_current_pA=" << edge.peak_current_pA << '\n';
+        }
 
-        if (nan_count > 0 || !std::isfinite(min_voltage) || !std::isfinite(max_voltage)) {
+        if (nan_count > 0 || !exploding_neurons.empty() || !std::isfinite(min_voltage) || !std::isfinite(max_voltage)) {
             return EXIT_FAILURE;
         }
         return EXIT_SUCCESS;

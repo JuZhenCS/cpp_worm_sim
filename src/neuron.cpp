@@ -23,7 +23,15 @@
 
 namespace cpp_neuron {
 
-PassiveNeuron::PassiveNeuron(Cell cell) : cell_(std::move(cell)), injected_current_pA_(cell_.compartments.size(), 0.0) {
+PassiveNeuron::PassiveNeuron(Cell cell)
+    : cell_(std::move(cell)),
+      injected_current_pA_(cell_.compartments.size(), 0.0),
+      zero_conductance_nS_(cell_.compartments.size(), 0.0),
+      zero_reversal_mV_(cell_.compartments.size(), 0.0),
+      matrix_(cell_.compartments.size() * cell_.compartments.size(), 0.0),
+      inverse_matrix_(cell_.compartments.size() * cell_.compartments.size(), 0.0),
+      rhs_(cell_.compartments.size(), 0.0),
+      solution_(cell_.compartments.size(), 0.0) {
     if (cell_.compartments.empty()) {
         throw std::runtime_error("PassiveNeuron requires at least one compartment");
     }
@@ -49,11 +57,7 @@ void PassiveNeuron::step(double dt_ms) {
 }
 
 void PassiveNeuron::step(double dt_ms, const std::vector<double>& injected_current_pA) {
-    step_with_conductance(
-        dt_ms,
-        injected_current_pA,
-        std::vector<double>(cell_.compartments.size(), 0.0),
-        std::vector<double>(cell_.compartments.size(), 0.0));
+    step_with_conductance(dt_ms, injected_current_pA, zero_conductance_nS_, zero_reversal_mV_);
 }
 
 void PassiveNeuron::step_with_conductance(
@@ -73,11 +77,14 @@ void PassiveNeuron::step_with_conductance(
     }
 
     const std::size_t n = cell_.compartments.size();
-    std::vector<double> matrix(n * n, 0.0);
-    std::vector<double> rhs(n, 0.0);
+    const bool cacheable_matrix = std::all_of(extra_conductance_nS.begin(), extra_conductance_nS.end(), [](double g) {
+        return g == 0.0;
+    });
+    std::fill(matrix_.begin(), matrix_.end(), 0.0);
+    std::fill(rhs_.begin(), rhs_.end(), 0.0);
 
-    auto at = [&matrix, n](std::size_t row, std::size_t col) -> double& {
-        return matrix[row * n + col];
+    auto at = [this, n](std::size_t row, std::size_t col) -> double& {
+        return matrix_[row * n + col];
     };
 
     for (std::size_t i = 0; i < n; ++i) {
@@ -94,8 +101,8 @@ void PassiveNeuron::step_with_conductance(
             channel->step(c.voltage_mV, dt_ms);
             ion_current_pA += channel->current_pA(c.voltage_mV);
         }
-        rhs[i] += c_over_dt * c.voltage_mV + c.leak_conductance_nS * c.leak_reversal_mV
-                  + extra_g * extra_reversal_mV[i] + injected_current_pA[i] - ion_current_pA;
+        rhs_[i] += c_over_dt * c.voltage_mV + c.leak_conductance_nS * c.leak_reversal_mV
+                   + extra_g * extra_reversal_mV[i] + injected_current_pA[i] - ion_current_pA;
 
         if (c.parent_index >= 0) {
             const auto parent = static_cast<std::size_t>(c.parent_index);
@@ -110,7 +117,77 @@ void PassiveNeuron::step_with_conductance(
         }
     }
 
-    for (std::size_t col = 0; col < n; ++col) {
+    if (cacheable_matrix && cached_inverse_valid_ && cached_inverse_dt_ms_ == dt_ms) {
+        for (std::size_t i = 0; i < n; ++i) {
+            double voltage = 0.0;
+            for (std::size_t j = 0; j < n; ++j) {
+                voltage += inverse_matrix_[i * n + j] * rhs_[j];
+            }
+            solution_[i] = voltage;
+        }
+        for (std::size_t i = 0; i < n; ++i) {
+            cell_.compartments[i].voltage_mV = solution_[i];
+        }
+    } else if (cacheable_matrix) {
+        std::fill(inverse_matrix_.begin(), inverse_matrix_.end(), 0.0);
+        auto inv_at = [this, n](std::size_t row, std::size_t col) -> double& {
+            return inverse_matrix_[row * n + col];
+        };
+        for (std::size_t i = 0; i < n; ++i) {
+            inv_at(i, i) = 1.0;
+        }
+
+        for (std::size_t col = 0; col < n; ++col) {
+            std::size_t pivot = col;
+            double pivot_abs = std::abs(at(col, col));
+            for (std::size_t row = col + 1; row < n; ++row) {
+                const double candidate = std::abs(at(row, col));
+                if (candidate > pivot_abs) {
+                    pivot = row;
+                    pivot_abs = candidate;
+                }
+            }
+            if (pivot_abs < 1e-18) {
+                throw std::runtime_error("Passive solve failed: singular matrix");
+            }
+            if (pivot != col) {
+                for (std::size_t k = 0; k < n; ++k) {
+                    std::swap(at(col, k), at(pivot, k));
+                    std::swap(inv_at(col, k), inv_at(pivot, k));
+                }
+            }
+            const double diag = at(col, col);
+            for (std::size_t k = 0; k < n; ++k) {
+                at(col, k) /= diag;
+                inv_at(col, k) /= diag;
+            }
+
+            for (std::size_t row = 0; row < n; ++row) {
+                if (row == col) {
+                    continue;
+                }
+                const double factor = at(row, col);
+                if (factor == 0.0) {
+                    continue;
+                }
+                for (std::size_t k = 0; k < n; ++k) {
+                    at(row, k) -= factor * at(col, k);
+                    inv_at(row, k) -= factor * inv_at(col, k);
+                }
+            }
+        }
+        cached_inverse_dt_ms_ = dt_ms;
+        cached_inverse_valid_ = true;
+
+        for (std::size_t i = 0; i < n; ++i) {
+            double voltage = 0.0;
+            for (std::size_t j = 0; j < n; ++j) {
+                voltage += inverse_matrix_[i * n + j] * rhs_[j];
+            }
+            cell_.compartments[i].voltage_mV = voltage;
+        }
+    } else {
+        for (std::size_t col = 0; col < n; ++col) {
         std::size_t pivot = col;
         double pivot_abs = std::abs(at(col, col));
         for (std::size_t row = col + 1; row < n; ++row) {
@@ -127,13 +204,13 @@ void PassiveNeuron::step_with_conductance(
             for (std::size_t k = col; k < n; ++k) {
                 std::swap(at(col, k), at(pivot, k));
             }
-            std::swap(rhs[col], rhs[pivot]);
+            std::swap(rhs_[col], rhs_[pivot]);
         }
         const double diag = at(col, col);
         for (std::size_t k = col; k < n; ++k) {
             at(col, k) /= diag;
         }
-        rhs[col] /= diag;
+        rhs_[col] /= diag;
 
         for (std::size_t row = 0; row < n; ++row) {
             if (row == col) {
@@ -146,12 +223,13 @@ void PassiveNeuron::step_with_conductance(
             for (std::size_t k = col; k < n; ++k) {
                 at(row, k) -= factor * at(col, k);
             }
-            rhs[row] -= factor * rhs[col];
+            rhs_[row] -= factor * rhs_[col];
         }
     }
 
     for (std::size_t i = 0; i < n; ++i) {
-        cell_.compartments[i].voltage_mV = rhs[i];
+        cell_.compartments[i].voltage_mV = rhs_[i];
+    }
     }
 
     CalciumInternalState calcium;
