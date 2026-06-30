@@ -1,10 +1,10 @@
-# runner.cpp 开发说明
+# neuron_runner.cpp 开发说明
 
-对应 [runner.cpp](../../src/runner/runner.cpp) 和 [runner.hpp](../../src/runner/runner.hpp)。
+对应 [neuron_runner.cpp](../../src/neuron_runner/neuron_runner.cpp) 和 [neuron_runner.hpp](../../src/neuron_runner/neuron_runner.hpp)。
 
 ## 职责
 
-`runner.cpp` 是单细胞可执行程序的应用编排层：
+`neuron_runner.cpp` 是单细胞可执行程序的应用编排层：
 
 1. 把 `argc/argv` 解析为 `RunnerConfig`；
 2. 合并细胞默认protocol与CLI覆盖；

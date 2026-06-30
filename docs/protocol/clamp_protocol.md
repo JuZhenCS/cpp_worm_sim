@@ -1,6 +1,6 @@
 # clamp_protocol.cpp 开发说明
 
-对应 [clamp_protocol.cpp](../../src/protocol/clamp_protocol.cpp) 和 [clamp_protocol.hpp](../../include/cpp_neuron_core/protocol/clamp_protocol.hpp)。
+对应 [clamp_protocol.cpp](../../src/protocol/clamp_protocol.cpp) 和 [clamp_protocol.hpp](../../include/neuron/protocol/clamp_protocol.hpp)。
 
 ## 职责
 

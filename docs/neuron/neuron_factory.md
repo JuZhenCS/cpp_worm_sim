@@ -1,6 +1,6 @@
 # neuron_factory.cpp 开发说明
 
-对应 [neuron_factory.cpp](../../src/neuron/neuron_factory.cpp) 和 [neuron_factory.hpp](../../include/cpp_neuron_core/neuron/neuron_factory.hpp)。
+对应 [neuron_factory.cpp](../../src/neuron/neuron_factory.cpp) 和 [neuron_factory.hpp](../../include/neuron/neuron/neuron_factory.hpp)。
 
 ## 职责
 

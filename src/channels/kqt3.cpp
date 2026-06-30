@@ -1,9 +1,9 @@
-#include "cpp_neuron_core/channels/kqt3.hpp"
+#include "neuron/channels/kqt3.hpp"
 
 #include <cmath>
 #include <memory>
 
-namespace cpp_neuron {
+namespace neuron {
 
 Kqt3Channel::Kqt3Channel(double conductance_nS, double reversal_mV)
     : conductance_nS_(conductance_nS), reversal_mV_(reversal_mV) {}
@@ -85,4 +85,4 @@ std::unique_ptr<Channel> Kqt3Channel::clone() const {
     return std::make_unique<Kqt3Channel>(*this);
 }
 
-}  // namespace cpp_neuron
+}  // namespace neuron

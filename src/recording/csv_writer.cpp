@@ -1,9 +1,9 @@
-#include "cpp_neuron_core/recording/csv_writer.hpp"
+#include "neuron/recording/csv_writer.hpp"
 
 #include <fstream>
 #include <stdexcept>
 
-namespace cpp_neuron {
+namespace neuron {
 
 void write_trace_csv(const std::string& path, const std::vector<TracePoint>& trace) {
     std::ofstream out(path);
@@ -57,4 +57,4 @@ void write_channel_diagnostics_csv(
     }
 }
 
-}  // namespace cpp_neuron
+}  // namespace neuron

@@ -1,9 +1,9 @@
-#include "cpp_neuron_core/channels/egl2.hpp"
+#include "neuron/channels/egl2.hpp"
 
 #include <cmath>
 #include <memory>
 
-namespace cpp_neuron {
+namespace neuron {
 
 Egl2Channel::Egl2Channel(double conductance_nS) : conductance_nS_(conductance_nS) {}
 
@@ -53,4 +53,4 @@ std::unique_ptr<Channel> Egl2Channel::clone() const {
     return std::make_unique<Egl2Channel>(*this);
 }
 
-}  // namespace cpp_neuron
+}  // namespace neuron

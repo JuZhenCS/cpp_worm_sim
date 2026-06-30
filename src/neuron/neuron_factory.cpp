@@ -1,8 +1,8 @@
-#include "cpp_neuron_core/neuron/neuron_factory.hpp"
+#include "neuron/neuron/neuron_factory.hpp"
 
-#include "cpp_neuron_core/neuron/cell_loader.hpp"
+#include "neuron/neuron/cell_loader.hpp"
 
-namespace cpp_neuron {
+namespace neuron {
 
 namespace {
 
@@ -81,4 +81,4 @@ std::unique_ptr<NeuronModel> create_neuron(const NeuronBuildConfig& config) {
     return create_multi_compartment_neuron(config);
 }
 
-}  // namespace cpp_neuron
+}  // namespace neuron

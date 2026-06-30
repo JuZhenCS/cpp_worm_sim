@@ -1,9 +1,9 @@
-#include "cpp_neuron_core/channels/shk1.hpp"
+#include "neuron/channels/shk1.hpp"
 
 #include <cmath>
 #include <memory>
 
-namespace cpp_neuron {
+namespace neuron {
 
 Shk1Channel::Shk1Channel(double conductance_nS) : conductance_nS_(conductance_nS) {}
 
@@ -69,4 +69,4 @@ std::unique_ptr<Channel> Shk1Channel::clone() const {
     return std::make_unique<Shk1Channel>(*this);
 }
 
-}  // namespace cpp_neuron
+}  // namespace neuron

@@ -1,4 +1,4 @@
-#include "cpp_neuron_core/synapse.hpp"
+#include "neuron/synapse.hpp"
 
 #include <algorithm>
 #include <cmath>
@@ -6,7 +6,7 @@
 #include <string>
 #include <utility>
 
-namespace cpp_neuron {
+namespace neuron {
 namespace {
 
 constexpr double kMicroSiemensMillivoltToPicoamp = 1000.0;
@@ -146,4 +146,4 @@ double GapJunction::apply_and_current_to_a_pA() {
     return i_to_a;
 }
 
-}  // namespace cpp_neuron
+}  // namespace neuron

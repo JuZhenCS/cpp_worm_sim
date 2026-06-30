@@ -1,6 +1,6 @@
 # cell_loader.cpp 开发说明
 
-对应 [cell_loader.cpp](../../src/neuron/cell_loader.cpp) 和 [cell_loader.hpp](../../include/cpp_neuron_core/neuron/cell_loader.hpp)。
+对应 [cell_loader.cpp](../../src/neuron/cell_loader.cpp) 和 [cell_loader.hpp](../../include/neuron/neuron/cell_loader.hpp)。
 
 ## 职责
 

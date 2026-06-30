@@ -1,4 +1,4 @@
-#include "cpp_neuron_core/synapse_loader.hpp"
+#include "neuron/synapse_loader.hpp"
 
 #include <algorithm>
 #include <cmath>
@@ -7,7 +7,7 @@
 #include <stdexcept>
 #include <utility>
 
-namespace cpp_neuron {
+namespace neuron {
 namespace {
 
 using CsvRow = std::unordered_map<std::string, std::string>;
@@ -207,4 +207,4 @@ SynapseNetwork load_synapse_network_csv(
     return network;
 }
 
-}  // namespace cpp_neuron
+}  // namespace neuron

@@ -1,6 +1,6 @@
-#include "cpp_neuron_core/neuron/cell.hpp"
+#include "neuron/neuron/cell.hpp"
 
-namespace cpp_neuron {
+namespace neuron {
 
 Compartment::Compartment(const Compartment& other)
     : index(other.index),
@@ -75,4 +75,4 @@ Compartment& Compartment::operator=(const Compartment& other) {
     return *this;
 }
 
-}  // namespace cpp_neuron
+}  // namespace neuron

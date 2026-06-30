@@ -1,4 +1,4 @@
-#include "runner/runner.hpp"
+#include "neuron_runner/neuron_runner.hpp"
 
 #include <iostream>
 #include <stdexcept>
@@ -13,7 +13,7 @@ void require(bool condition) {
     }
 }
 
-cpp_neuron::runner::RunnerConfig parse(std::initializer_list<const char*> raw_args) {
+neuron::neuron_runner::RunnerConfig parse(std::initializer_list<const char*> raw_args) {
     std::vector<std::string> storage;
     storage.reserve(raw_args.size());
     for (const char* arg : raw_args) {
@@ -26,15 +26,15 @@ cpp_neuron::runner::RunnerConfig parse(std::initializer_list<const char*> raw_ar
         argv.push_back(arg.data());
     }
 
-    return cpp_neuron::runner::parse_config(static_cast<int>(argv.size()), argv.data());
+    return neuron::neuron_runner::parse_config(static_cast<int>(argv.size()), argv.data());
 }
 
 void test_defaults() {
-    const auto config = parse({"cpp_neuron_runner.exe"});
+    const auto config = parse({"neuron_runner.exe"});
 
     require(config.neuron.name == "AIYL");
     require(config.neuron.cell_file == "../data/aiyl/AIYL_cell.csv");
-    require(config.protocol == cpp_neuron::runner::ProtocolKind::IClamp);
+    require(config.protocol == neuron::neuron_runner::ProtocolKind::IClamp);
     require(config.iclamp.v_init_mV == -45.0);
     require(config.iclamp.amplitude_pA == 10.0);
     require(config.output == "trace.csv");
@@ -43,7 +43,7 @@ void test_defaults() {
 
 void test_iclamp_overrides_and_mechanisms() {
     const auto config = parse({
-        "cpp_neuron_runner.exe",
+        "neuron_runner.exe",
         "--cell",
         "AVAL",
         "--protocol",
@@ -78,7 +78,7 @@ void test_iclamp_overrides_and_mechanisms() {
 
 void test_seclamp_overrides() {
     const auto config = parse({
-        "cpp_neuron_runner.exe",
+        "neuron_runner.exe",
         "--cell",
         "AWCL",
         "--protocol",
@@ -91,7 +91,7 @@ void test_seclamp_overrides() {
         "5",
     });
 
-    require(config.protocol == cpp_neuron::runner::ProtocolKind::SEClamp);
+    require(config.protocol == neuron::neuron_runner::ProtocolKind::SEClamp);
     require(config.seclamp.v_command_mV == 70.0);
     require(config.seclamp.dt_ms == 0.05);
     require(config.seclamp.tstop_ms == 5.0);
@@ -100,7 +100,7 @@ void test_seclamp_overrides() {
 void test_unknown_protocol_rejected() {
     bool threw = false;
     try {
-        (void)parse({"cpp_neuron_runner.exe", "--protocol", "unknown"});
+        (void)parse({"neuron_runner.exe", "--protocol", "unknown"});
     } catch (const std::runtime_error&) {
         threw = true;
     }
@@ -110,7 +110,7 @@ void test_unknown_protocol_rejected() {
 void test_missing_value_rejected() {
     bool threw = false;
     try {
-        (void)parse({"cpp_neuron_runner.exe", "--cell"});
+        (void)parse({"neuron_runner.exe", "--cell"});
     } catch (const std::runtime_error&) {
         threw = true;
     }
@@ -120,7 +120,7 @@ void test_missing_value_rejected() {
 void test_nonpositive_timing_rejected() {
     bool threw = false;
     try {
-        (void)parse({"cpp_neuron_runner.exe", "--dt-ms", "0"});
+        (void)parse({"neuron_runner.exe", "--dt-ms", "0"});
     } catch (const std::runtime_error&) {
         threw = true;
     }

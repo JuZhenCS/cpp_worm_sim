@@ -1,9 +1,9 @@
-#include "cpp_neuron_core/channels/egl19.hpp"
+#include "neuron/channels/egl19.hpp"
 
 #include <cmath>
 #include <memory>
 
-namespace cpp_neuron {
+namespace neuron {
 
 Egl19Channel::Egl19Channel(double conductance_nS, double reversal_mV)
     : conductance_nS_(conductance_nS), reversal_mV_(reversal_mV) {}
@@ -65,4 +65,4 @@ std::unique_ptr<Channel> Egl19Channel::clone() const {
     return std::make_unique<Egl19Channel>(*this);
 }
 
-}  // namespace cpp_neuron
+}  // namespace neuron

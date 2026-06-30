@@ -1,26 +1,26 @@
-# cpp_neuron_runner 开发说明
+# neuron_runner 开发说明
 
-本文档说明 `cpp_neuron_runner.exe` 的入口架构。入口相关代码被拆为三个文件：
+本文档说明 `neuron_runner.exe` 的入口架构。入口相关代码被拆为三个文件：
 
 | 文件 | 职责 |
 | --- | --- |
 | [main.cpp](../../src/main.cpp) | 进程入口和异常边界 |
-| [runner.hpp](../../src/runner/runner.hpp) | runner 配置模型与公开函数 |
-| [runner.cpp](../../src/runner/runner.cpp) | CLI 解析、protocol 配置、执行和输出 |
+| [neuron_runner.hpp](../../src/neuron_runner/neuron_runner.hpp) | runner 配置模型与公开函数 |
+| [neuron_runner.cpp](../../src/neuron_runner/neuron_runner.cpp) | CLI 解析、protocol 配置、执行和输出 |
 
 核心原则是：`main.cpp` 只负责启动应用，不包含业务细节。
 
 ## 总体调用链
 
 ```text
-操作系统启动 cpp_neuron_runner.exe
+操作系统启动 neuron_runner.exe
   -> main(argc, argv)
-  -> runner::parse_config(argc, argv)
+  -> neuron::neuron_runner::parse_config(argc, argv)
        -> 读取 cell、protocol、路径和数值参数
        -> 解析 --enable-* 通道开关
        -> 合并细胞默认 protocol 参数与 CLI 覆盖
        -> 返回 RunnerConfig
-  -> runner::run(config)
+  -> neuron::neuron_runner::run(config)
        -> create_multi_compartment_neuron(config.neuron)
             -> load_cell_csv()
             -> 构造 MultiCompartmentNeuron
@@ -53,9 +53,9 @@
 
 这样新增 channel 或修改 protocol 时，一般不需要改 `main.cpp`。
 
-### runner.hpp：稳定接口
+### neuron_runner.hpp：稳定接口
 
-`runner.hpp` 定义入口层内部使用的配置模型。
+`neuron_runner.hpp` 定义入口层内部使用的配置模型。
 
 #### ProtocolKind
 
@@ -100,9 +100,9 @@ void run(const RunnerConfig& config);
 
 `parse_config()` 负责把外部字符串输入变成内部强类型配置；`run()` 只接受已解析配置，不再处理命令行字符串。
 
-### runner.cpp：应用编排
+### neuron_runner.cpp：应用编排
 
-`runner.cpp` 分为两个部分。
+`neuron_runner.cpp` 分为两个部分。
 
 匿名命名空间中的函数属于实现细节：
 
@@ -113,7 +113,7 @@ void run(const RunnerConfig& config);
 - `default_iclamp()`
 - `default_seclamp()`
 
-`cpp_neuron::runner` 命名空间中的公开实现：
+`neuron::neuron_runner` 命名空间中的公开实现：
 
 - `parse_config()`
 - `run()`
@@ -127,13 +127,13 @@ void run(const RunnerConfig& config);
 读取 `--name value` 形式参数：
 
 ```text
-cpp_neuron_runner.exe --cell AIYL --protocol iclamp
+neuron_runner.exe --cell AIYL --protocol iclamp
 ```
 
 对应的 `argv` 大致是：
 
 ```text
-argv[0] = "cpp_neuron_runner.exe"
+argv[0] = "neuron_runner.exe"
 argv[1] = "--cell"
 argv[2] = "AIYL"
 argv[3] = "--protocol"
@@ -253,10 +253,10 @@ if (!config.diagnostic_output.empty()) {
 
 ```text
 main.cpp
-  -> runner.hpp
+  -> neuron_runner.hpp
 
-runner.cpp
-  -> runner.hpp
+neuron_runner.cpp
+  -> neuron_runner.hpp
   -> neuron_factory.hpp
   -> clamp_protocol.hpp
   -> csv_writer.hpp
@@ -279,7 +279,7 @@ clamp protocol
 至少检查：
 
 1. `NeuronMechanismConfig` 增加开关；
-2. `runner.cpp` 的 channel flag 映射表增加 CLI 名称；
+2. `neuron_runner.cpp` 的 channel flag 映射表增加 CLI 名称；
 3. `neuron_factory.cpp` 增加挂载判断；
 4. `MultiCompartmentNeuron` 增加 attach 方法；
 5. cell CSV loader 和 `Compartment` 增加 conductance 字段；
@@ -297,7 +297,7 @@ clamp protocol
 
 ### 修改 CLI
 
-CLI 细节应留在 `runner.cpp`。不要把参数扫描重新放回 `main.cpp`，也不要让 neuron/core 层依赖 `argc/argv`。
+CLI 细节应留在 `neuron_runner.cpp`。不要把参数扫描重新放回 `main.cpp`，也不要让 neuron/core 层依赖 `argc/argv`。
 
 ## Debug 建议
 
@@ -322,9 +322,9 @@ cmake --build build_debug
 建议断点：
 
 1. `main()`
-2. `runner::parse_config()`
+2. `neuron::neuron_runner::parse_config()`
 3. `parse_mechanism_config()`
-4. `runner::run()`
+4. `neuron::neuron_runner::run()`
 5. `create_multi_compartment_neuron()`
 6. `load_cell_csv()`
 7. `run_current_clamp_with_diagnostics()`

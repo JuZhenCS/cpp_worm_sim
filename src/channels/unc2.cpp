@@ -1,9 +1,9 @@
-#include "cpp_neuron_core/channels/unc2.hpp"
+#include "neuron/channels/unc2.hpp"
 
 #include <cmath>
 #include <memory>
 
-namespace cpp_neuron {
+namespace neuron {
 
 Unc2Channel::Unc2Channel(double conductance_nS, double reversal_mV)
     : conductance_nS_(conductance_nS), reversal_mV_(reversal_mV) {}
@@ -60,4 +60,4 @@ std::unique_ptr<Channel> Unc2Channel::clone() const {
     return std::make_unique<Unc2Channel>(*this);
 }
 
-}  // namespace cpp_neuron
+}  // namespace neuron

@@ -1,6 +1,6 @@
-#include "cpp_neuron_core/channels/nca.hpp"
+#include "neuron/channels/nca.hpp"
 
-namespace cpp_neuron {
+namespace neuron {
 
 NcaChannel::NcaChannel(double conductance_nS, double reversal_mV)
     : conductance_nS_(conductance_nS), reversal_mV_(reversal_mV) {}
@@ -25,4 +25,4 @@ std::unique_ptr<Channel> NcaChannel::clone() const {
     return std::make_unique<NcaChannel>(*this);
 }
 
-}  // namespace cpp_neuron
+}  // namespace neuron

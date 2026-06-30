@@ -1,4 +1,4 @@
-#include "cpp_neuron_core/neuron/cell_loader.hpp"
+#include "neuron/neuron/cell_loader.hpp"
 
 #include <fstream>
 #include <map>
@@ -6,7 +6,7 @@
 #include <stdexcept>
 #include <vector>
 
-namespace cpp_neuron {
+namespace neuron {
 
 namespace {
 
@@ -108,4 +108,4 @@ Cell load_cell_csv(const std::string& path, const std::string& cell_name) {
     return cell;
 }
 
-}  // namespace cpp_neuron
+}  // namespace neuron

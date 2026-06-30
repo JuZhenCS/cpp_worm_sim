@@ -1,9 +1,9 @@
-#include "cpp_neuron_core/channels/cca1.hpp"
+#include "neuron/channels/cca1.hpp"
 
 #include <cmath>
 #include <memory>
 
-namespace cpp_neuron {
+namespace neuron {
 
 Cca1Channel::Cca1Channel(double conductance_nS, double reversal_mV)
     : conductance_nS_(conductance_nS), reversal_mV_(reversal_mV) {}
@@ -59,4 +59,4 @@ std::unique_ptr<Channel> Cca1Channel::clone() const {
     return std::make_unique<Cca1Channel>(*this);
 }
 
-}  // namespace cpp_neuron
+}  // namespace neuron

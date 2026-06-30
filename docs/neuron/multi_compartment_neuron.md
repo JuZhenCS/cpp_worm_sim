@@ -1,6 +1,6 @@
 # multi_compartment_neuron.cpp 开发说明
 
-对应 [multi_compartment_neuron.cpp](../../src/neuron/multi_compartment_neuron.cpp) 和 [multi_compartment_neuron.hpp](../../include/cpp_neuron_core/neuron/multi_compartment_neuron.hpp)。
+对应 [multi_compartment_neuron.cpp](../../src/neuron/multi_compartment_neuron.cpp) 和 [multi_compartment_neuron.hpp](../../include/neuron/neuron/multi_compartment_neuron.hpp)。
 
 ## 职责
 

@@ -1,6 +1,6 @@
-#include "cpp_neuron_core/neuron/multi_compartment_neuron.hpp"
-#include "cpp_neuron_core/neuron/neuron_factory.hpp"
-#include "cpp_neuron_core/synapse_loader.hpp"
+#include "neuron/neuron/multi_compartment_neuron.hpp"
+#include "neuron/neuron/neuron_factory.hpp"
+#include "neuron/synapse_loader.hpp"
 
 #include <algorithm>
 #include <cmath>
@@ -137,12 +137,12 @@ std::unordered_map<std::string, NeuronReference> load_neuron_references(const st
 
 struct RepresentativeTemplate {
     std::string cell_file;
-    cpp_neuron::NeuronMechanismConfig mechanisms;
+    neuron::NeuronMechanismConfig mechanisms;
     double initial_voltage_mV = -60.0;
 };
 
-cpp_neuron::NeuronMechanismConfig mechanisms_for_reference(const std::string& reference) {
-    cpp_neuron::NeuronMechanismConfig mechanisms;
+neuron::NeuronMechanismConfig mechanisms_for_reference(const std::string& reference) {
+    neuron::NeuronMechanismConfig mechanisms;
     if (reference == "AWC") {
         mechanisms.enable_kqt3 = true;
         mechanisms.enable_shl1 = true;
@@ -283,8 +283,8 @@ int main(int argc, char** argv) {
         collect_gap_names(gap_csv, names);
         const auto neuron_references = load_neuron_references(neuron_reference_csv);
 
-        cpp_neuron::NeuronIndex neurons;
-        std::vector<std::shared_ptr<cpp_neuron::NeuronModel>> owned_neurons;
+        neuron::NeuronIndex neurons;
+        std::vector<std::shared_ptr<neuron::NeuronModel>> owned_neurons;
         std::vector<std::string> owned_neuron_names;
         owned_neurons.reserve(names.size());
         owned_neuron_names.reserve(names.size());
@@ -298,12 +298,12 @@ int main(int argc, char** argv) {
             }
             const auto& reference = reference_it->second;
             const auto representative = template_for_reference(reference.parameter_reference, template_data_dir);
-            cpp_neuron::NeuronBuildConfig build_config;
+            neuron::NeuronBuildConfig build_config;
             build_config.name = name;
             build_config.cell_file = representative.cell_file;
             build_config.mechanisms = representative.mechanisms;
 
-            std::shared_ptr<cpp_neuron::NeuronModel> neuron(cpp_neuron::create_neuron(build_config));
+            std::shared_ptr<neuron::NeuronModel> neuron(neuron::create_neuron(build_config));
             neuron->set_all_voltages(representative.initial_voltage_mV + 0.1 * (static_cast<double>(idx % 7) - 3.0));
             neurons.emplace(name, neuron);
             owned_neurons.push_back(std::move(neuron));
@@ -313,7 +313,7 @@ int main(int argc, char** argv) {
             ++idx;
         }
 
-        auto network = cpp_neuron::load_synapse_network_csv(chemical_csv, gap_csv, neurons);
+        auto network = neuron::load_synapse_network_csv(chemical_csv, gap_csv, neurons);
 
         double min_voltage = std::numeric_limits<double>::infinity();
         double max_voltage = -std::numeric_limits<double>::infinity();

@@ -1,9 +1,9 @@
-#include "cpp_neuron_core/channels/kvs1.hpp"
+#include "neuron/channels/kvs1.hpp"
 
 #include <cmath>
 #include <memory>
 
-namespace cpp_neuron {
+namespace neuron {
 
 Kvs1Channel::Kvs1Channel(double conductance_nS) : conductance_nS_(conductance_nS) {}
 
@@ -58,4 +58,4 @@ std::unique_ptr<Channel> Kvs1Channel::clone() const {
     return std::make_unique<Kvs1Channel>(*this);
 }
 
-}  // namespace cpp_neuron
+}  // namespace neuron

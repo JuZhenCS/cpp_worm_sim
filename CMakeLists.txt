@@ -18,9 +18,12 @@ set(CMAKE_CXX_EXTENSIONS OFF)       # 禁用GCC扩展（保证标准兼容）
 # -------------------------------
 # 4. 核心库：神经系统模块
 # -------------------------------
-add_library(cpp_neuron_core
+add_library(neuron_core
         src/neuron/cell.cpp
         src/neuron/multi_compartment_neuron.cpp
+        src/neuron/cable_solver.cpp
+        src/neuron/channel_installer.cpp
+        src/neuron/diagnostics.cpp
         src/neuron/neuron_factory.cpp
         src/protocol/clamp_protocol.cpp
         src/recording/csv_writer.cpp
@@ -47,31 +50,31 @@ add_library(cpp_neuron_core
 # -------------------------------
 # 5. 头文件路径（对外暴露接口）
 # -------------------------------
-target_include_directories(cpp_neuron_core PUBLIC include)
+target_include_directories(neuron_core PUBLIC include)
 
 # -------------------------------
 # 6. 单神经元runner支持库（供主程序和测试复用）
 # -------------------------------
-add_library(cpp_neuron_runner_support STATIC
-    src/runner/runner.cpp
+add_library(neuron_runner_support STATIC
+    src/neuron_runner/neuron_runner.cpp
 )
-target_include_directories(cpp_neuron_runner_support PUBLIC src)
-target_link_libraries(cpp_neuron_runner_support PUBLIC cpp_neuron_core)
+target_include_directories(neuron_runner_support PUBLIC src)
+target_link_libraries(neuron_runner_support PUBLIC neuron_core)
 
 # -------------------------------
 # 7. 主运行程序（可执行文件）
 # -------------------------------
-add_executable(cpp_neuron_runner src/main.cpp)
-target_link_libraries(cpp_neuron_runner PRIVATE cpp_neuron_runner_support)
+add_executable(neuron_runner src/main.cpp)
+target_link_libraries(neuron_runner PRIVATE neuron_runner_support)
 
 # -------------------------------
 # 8. 测试程序（单元测试）
 # -------------------------------
 add_executable(runner_tests tests/test_runner.cpp)
-target_link_libraries(runner_tests PRIVATE cpp_neuron_runner_support)
+target_link_libraries(runner_tests PRIVATE neuron_runner_support)
 
 add_executable(synapse_tests tests/test_synapse.cpp)
-target_link_libraries(synapse_tests PRIVATE cpp_neuron_core)
+target_link_libraries(synapse_tests PRIVATE neuron_core)
 
 # 给测试程序定义一个宏（告诉代码工程路径）
 target_compile_definitions(synapse_tests PRIVATE
@@ -86,7 +89,7 @@ add_test(NAME synapse_tests COMMAND synapse_tests)
 # 9. smoke测试（快速验证功能）
 # -------------------------------
 add_executable(synapse_smoke tests/synapse_smoke.cpp)
-target_link_libraries(synapse_smoke PRIVATE cpp_neuron_core)
+target_link_libraries(synapse_smoke PRIVATE neuron_core)
 
 target_compile_definitions(synapse_smoke PRIVATE
         CPP_WORM_SIM_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}"

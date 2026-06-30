@@ -1,10 +1,10 @@
-#include "cpp_neuron_core/channels/slo_coupled.hpp"
+#include "neuron/channels/slo_coupled.hpp"
 
 #include <cmath>
 #include <memory>
 #include <utility>
 
-namespace cpp_neuron {
+namespace neuron {
 
 SloCoupledChannel::SloCoupledChannel(
     std::string channel_name,
@@ -163,4 +163,4 @@ std::unique_ptr<Channel> SloCoupledChannel::clone() const {
     return std::make_unique<SloCoupledChannel>(*this);
 }
 
-}  // namespace cpp_neuron
+}  // namespace neuron

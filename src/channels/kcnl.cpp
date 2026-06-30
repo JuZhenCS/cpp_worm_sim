@@ -1,9 +1,9 @@
-#include "cpp_neuron_core/channels/kcnl.hpp"
+#include "neuron/channels/kcnl.hpp"
 
 #include <cmath>
 #include <memory>
 
-namespace cpp_neuron {
+namespace neuron {
 
 KcnlChannel::KcnlChannel(double conductance_nS) : conductance_nS_(conductance_nS) {}
 
@@ -47,4 +47,4 @@ std::unique_ptr<Channel> KcnlChannel::clone() const {
     return std::make_unique<KcnlChannel>(*this);
 }
 
-}  // namespace cpp_neuron
+}  // namespace neuron

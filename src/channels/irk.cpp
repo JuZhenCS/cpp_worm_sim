@@ -1,9 +1,9 @@
-#include "cpp_neuron_core/channels/irk.hpp"
+#include "neuron/channels/irk.hpp"
 
 #include <cmath>
 #include <memory>
 
-namespace cpp_neuron {
+namespace neuron {
 
 IrkChannel::IrkChannel(double conductance_nS) : conductance_nS_(conductance_nS) {}
 
@@ -56,4 +56,4 @@ std::unique_ptr<Channel> IrkChannel::clone() const {
     return std::make_unique<IrkChannel>(*this);
 }
 
-}  // namespace cpp_neuron
+}  // namespace neuron

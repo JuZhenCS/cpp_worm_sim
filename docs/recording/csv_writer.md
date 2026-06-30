@@ -1,6 +1,6 @@
 # csv_writer.cpp 开发说明
 
-对应 [csv_writer.cpp](../../src/recording/csv_writer.cpp)、[csv_writer.hpp](../../include/cpp_neuron_core/recording/csv_writer.hpp) 和 [recording.hpp](../../include/cpp_neuron_core/recording/recording.hpp)。
+对应 [csv_writer.cpp](../../src/recording/csv_writer.cpp)、[csv_writer.hpp](../../include/neuron/recording/csv_writer.hpp) 和 [recording.hpp](../../include/neuron/recording/recording.hpp)。
 
 ## 职责
 

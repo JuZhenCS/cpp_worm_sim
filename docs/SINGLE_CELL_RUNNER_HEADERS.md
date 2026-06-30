@@ -1,12 +1,12 @@
 # 单细胞Runner头文件架构
 
-本文档总览 `cpp_neuron_runner.exe` 直接或间接依赖的头文件。目标是让每个头文件只表达一种稳定概念，避免应用入口、数值模型和文件I/O互相渗透。
+本文档总览 `neuron_runner.exe` 直接或间接依赖的头文件。目标是让每个头文件只表达一种稳定概念，避免应用入口、数值模型和文件I/O互相渗透。
 
 ## 分层
 
 ```text
 应用入口
-  src/runner/runner.hpp
+  src/neuron_runner/neuron_runner.hpp
        |
 用例层
   clamp_protocol.hpp
@@ -31,9 +31,9 @@ I/O边界
 
 ## 头文件职责
 
-### src/runner/runner.hpp
+### src/neuron_runner/neuron_runner.hpp
 
-应用层接口，不属于 `cpp_neuron_core` 公共领域接口。它定义 `ProtocolKind`、`RunnerConfig`、`parse_config()` 和 `run()`，把命令行边界与核心库连接起来。
+应用层接口，不属于 `neuron` 公共领域接口。它定义 `ProtocolKind`、`RunnerConfig`、`parse_config()` 和 `run()`，把命令行边界与核心库连接起来。
 
 ### channel.hpp
 

@@ -1,7 +1,7 @@
-#include "cpp_neuron_core/neuron/multi_compartment_neuron.hpp"
-#include "cpp_neuron_core/neuron/neuron_factory.hpp"
-#include "cpp_neuron_core/synapse_loader.hpp"
-#include "cpp_neuron_core/synapse.hpp"
+#include "neuron/neuron/multi_compartment_neuron.hpp"
+#include "neuron/neuron/neuron_factory.hpp"
+#include "neuron/synapse_loader.hpp"
+#include "neuron/synapse.hpp"
 
 #include <cassert>
 #include <cmath>
@@ -14,10 +14,10 @@
 
 namespace {
 
-std::shared_ptr<cpp_neuron::MultiCompartmentNeuron> neuron(const std::string& name, double voltage_mV) {
+std::shared_ptr<neuron::MultiCompartmentNeuron> neuron(const std::string& name, double voltage_mV) {
     const std::string cell_file = std::string(CPP_WORM_SIM_SOURCE_DIR) + "/data/aiyl/AIYL_cell.csv";
-    auto neuron = std::shared_ptr<cpp_neuron::MultiCompartmentNeuron>(
-        cpp_neuron::create_multi_compartment_neuron({name, cell_file, cpp_neuron::NeuronMechanismConfig{}}));
+    auto neuron = std::shared_ptr<neuron::MultiCompartmentNeuron>(
+        neuron::create_multi_compartment_neuron({name, cell_file, neuron::NeuronMechanismConfig{}}));
     neuron->set_all_voltages(voltage_mV);
     return neuron;
 }
@@ -27,13 +27,13 @@ void test_gate_stays_bounded_and_increases_with_pre_voltage() {
     auto pre_high = neuron("pre_high", 20.0);
     auto post = neuron("post", -60.0);
 
-    cpp_neuron::GradedChemicalSynapseConfig config;
+    neuron::GradedChemicalSynapseConfig config;
     config.g_uS = 1.0e-4;
 
-    cpp_neuron::GradedChemicalSynapse low(
-        pre_low, post, 0, 0, cpp_neuron::ChemicalComponentType::Excitatory, config);
-    cpp_neuron::GradedChemicalSynapse high(
-        pre_high, post, 0, 0, cpp_neuron::ChemicalComponentType::Excitatory, config);
+    neuron::GradedChemicalSynapse low(
+        pre_low, post, 0, 0, neuron::ChemicalComponentType::Excitatory, config);
+    neuron::GradedChemicalSynapse high(
+        pre_high, post, 0, 0, neuron::ChemicalComponentType::Excitatory, config);
 
     low.update_and_current_pA(1.0);
     high.update_and_current_pA(1.0);
@@ -47,12 +47,12 @@ void test_excitatory_component_current_direction() {
     auto pre = neuron("pre", 20.0);
     auto post = neuron("post", -60.0);
 
-    cpp_neuron::GradedChemicalSynapseConfig config;
+    neuron::GradedChemicalSynapseConfig config;
     config.g_uS = 1.0e-4;
     config.e_rev_mV = 30.0;
 
-    cpp_neuron::GradedChemicalSynapse synapse(
-        pre, post, 0, 0, cpp_neuron::ChemicalComponentType::Excitatory, config);
+    neuron::GradedChemicalSynapse synapse(
+        pre, post, 0, 0, neuron::ChemicalComponentType::Excitatory, config);
 
     const double current = synapse.update_and_current_pA(1.0);
     assert(current > 0.0);
@@ -62,12 +62,12 @@ void test_inhibitory_component_current_direction() {
     auto pre = neuron("pre", 20.0);
     auto post = neuron("post", -40.0);
 
-    cpp_neuron::GradedChemicalSynapseConfig config;
+    neuron::GradedChemicalSynapseConfig config;
     config.g_uS = 1.0e-4;
     config.e_rev_mV = -70.0;
 
-    cpp_neuron::GradedChemicalSynapse synapse(
-        pre, post, 0, 0, cpp_neuron::ChemicalComponentType::Inhibitory, config);
+    neuron::GradedChemicalSynapse synapse(
+        pre, post, 0, 0, neuron::ChemicalComponentType::Inhibitory, config);
 
     const double current = synapse.update_and_current_pA(1.0);
     assert(current < 0.0);
@@ -77,15 +77,15 @@ void test_micro_siemens_millivolt_to_picoamp_conversion() {
     auto pre = neuron("pre", 100.0);
     auto post = neuron("post", 0.0);
 
-    cpp_neuron::GradedChemicalSynapseConfig config;
+    neuron::GradedChemicalSynapseConfig config;
     config.g_uS = 1.0;
     config.tau_ms = 1.0;
     config.v_half_mV = -100.0;
     config.k_s_mV = 1.0;
     config.e_rev_mV = 1.0;
 
-    cpp_neuron::GradedChemicalSynapse synapse(
-        pre, post, 0, 0, cpp_neuron::ChemicalComponentType::Excitatory, config);
+    neuron::GradedChemicalSynapse synapse(
+        pre, post, 0, 0, neuron::ChemicalComponentType::Excitatory, config);
 
     const double current = synapse.update_and_current_pA(1.0);
     assert(std::abs(current - 1000.0) < 1.0e-6);
@@ -95,9 +95,9 @@ void test_gap_junction_conserves_current() {
     auto a = neuron("a", -40.0);
     auto b = neuron("b", -70.0);
 
-    cpp_neuron::GapJunctionConfig config;
+    neuron::GapJunctionConfig config;
     config.g_uS = 1.0e-4;
-    cpp_neuron::GapJunction gap(a, b, 0, 0, config);
+    neuron::GapJunction gap(a, b, 0, 0, config);
 
     const double i_to_a = gap.current_to_a_pA();
     assert(i_to_a < 0.0);
@@ -123,11 +123,11 @@ void test_csv_loader_builds_synapse_network() {
         out << "A__B,A,B,1,0.1,0.0001,0.00001,True,test\n";
     }
 
-    cpp_neuron::NeuronIndex neurons;
+    neuron::NeuronIndex neurons;
     neurons.emplace("A", neuron("A", 20.0));
     neurons.emplace("B", neuron("B", -60.0));
 
-    auto network = cpp_neuron::load_synapse_network_csv(chemical_csv.string(), gap_csv.string(), neurons);
+    auto network = neuron::load_synapse_network_csv(chemical_csv.string(), gap_csv.string(), neurons);
     assert(network.chemical_synapses.size() == 2);
     assert(network.gap_junctions.size() == 1);
 
@@ -148,12 +148,12 @@ void test_csv_loader_rejects_unknown_neuron() {
         out << "A__Missing__exc,A__Missing,A,Missing,exc,+,1,1,1,0.00049,0.00049,30,10,-20,5,True,test\n";
     }
 
-    cpp_neuron::NeuronIndex neurons;
+    neuron::NeuronIndex neurons;
     neurons.emplace("A", neuron("A", 20.0));
 
     bool threw = false;
     try {
-        (void)cpp_neuron::load_chemical_synapses_csv(chemical_csv.string(), neurons);
+        (void)neuron::load_chemical_synapses_csv(chemical_csv.string(), neurons);
     } catch (const std::runtime_error&) {
         threw = true;
     }

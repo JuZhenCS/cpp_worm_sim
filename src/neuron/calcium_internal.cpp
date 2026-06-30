@@ -1,8 +1,8 @@
-#include "cpp_neuron_core/neuron/calcium_internal.hpp"
+#include "neuron/neuron/calcium_internal.hpp"
 
 #include <cmath>
 
-namespace cpp_neuron {
+namespace neuron {
 
 CalciumInternalState::CalciumInternalState(double vcell_um3) : vcell_um3_(vcell_um3) {}
 
@@ -20,4 +20,4 @@ double CalciumInternalState::step(
     return target + (cai_uM_per_um2 - target) * std::exp(-dt_ms / removal_tau_ms_);
 }
 
-}  // namespace cpp_neuron
+}  // namespace neuron

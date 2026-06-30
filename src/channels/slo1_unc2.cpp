@@ -1,9 +1,9 @@
-#include "cpp_neuron_core/channels/slo1_unc2.hpp"
+#include "neuron/channels/slo1_unc2.hpp"
 
 #include <cmath>
 #include <memory>
 
-namespace cpp_neuron {
+namespace neuron {
 
 Slo1Unc2Channel::Slo1Unc2Channel(double conductance_nS) : conductance_nS_(conductance_nS) {}
 
@@ -125,4 +125,4 @@ std::unique_ptr<Channel> Slo1Unc2Channel::clone() const {
     return std::make_unique<Slo1Unc2Channel>(*this);
 }
 
-}  // namespace cpp_neuron
+}  // namespace neuron
