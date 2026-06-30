@@ -1,5 +1,5 @@
-#include "cpp_neuron_core/neuron.hpp"
-#include "cpp_neuron_core/neuron_factory.hpp"
+#include "cpp_neuron_core/neuron/multi_compartment_neuron.hpp"
+#include "cpp_neuron_core/neuron/neuron_factory.hpp"
 #include "cpp_neuron_core/synapse_loader.hpp"
 #include "cpp_neuron_core/synapse.hpp"
 
@@ -14,10 +14,10 @@
 
 namespace {
 
-std::shared_ptr<cpp_neuron::PassiveNeuron> neuron(const std::string& name, double voltage_mV) {
+std::shared_ptr<cpp_neuron::MultiCompartmentNeuron> neuron(const std::string& name, double voltage_mV) {
     const std::string cell_file = std::string(CPP_WORM_SIM_SOURCE_DIR) + "/data/aiyl/AIYL_cell.csv";
-    auto neuron = std::shared_ptr<cpp_neuron::PassiveNeuron>(
-        cpp_neuron::create_passive_neuron({name, cell_file, cpp_neuron::NeuronChannelConfig{}}));
+    auto neuron = std::shared_ptr<cpp_neuron::MultiCompartmentNeuron>(
+        cpp_neuron::create_multi_compartment_neuron({name, cell_file, cpp_neuron::NeuronMechanismConfig{}}));
     neuron->set_all_voltages(voltage_mV);
     return neuron;
 }

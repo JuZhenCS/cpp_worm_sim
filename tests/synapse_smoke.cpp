@@ -1,5 +1,5 @@
-#include "cpp_neuron_core/neuron.hpp"
-#include "cpp_neuron_core/neuron_factory.hpp"
+#include "cpp_neuron_core/neuron/multi_compartment_neuron.hpp"
+#include "cpp_neuron_core/neuron/neuron_factory.hpp"
 #include "cpp_neuron_core/synapse_loader.hpp"
 
 #include <algorithm>
@@ -137,77 +137,77 @@ std::unordered_map<std::string, NeuronReference> load_neuron_references(const st
 
 struct RepresentativeTemplate {
     std::string cell_file;
-    cpp_neuron::NeuronChannelConfig channels;
+    cpp_neuron::NeuronMechanismConfig mechanisms;
     double initial_voltage_mV = -60.0;
 };
 
-cpp_neuron::NeuronChannelConfig channels_for_reference(const std::string& reference) {
-    cpp_neuron::NeuronChannelConfig channels;
+cpp_neuron::NeuronMechanismConfig mechanisms_for_reference(const std::string& reference) {
+    cpp_neuron::NeuronMechanismConfig mechanisms;
     if (reference == "AWC") {
-        channels.enable_kqt3 = true;
-        channels.enable_shl1 = true;
-        channels.enable_egl19 = true;
-        channels.enable_unc2 = true;
+        mechanisms.enable_kqt3 = true;
+        mechanisms.enable_shl1 = true;
+        mechanisms.enable_egl19 = true;
+        mechanisms.enable_unc2 = true;
     } else if (reference == "AIY") {
-        channels.enable_nca = true;
-        channels.enable_irk = true;
-        channels.enable_kqt3 = true;
-        channels.enable_egl2 = true;
-        channels.enable_shk1 = true;
-        channels.enable_kvs1 = true;
-        channels.enable_shl1 = true;
-        channels.enable_egl36 = true;
-        channels.enable_egl19 = true;
-        channels.enable_cca1 = true;
-        channels.enable_calcium_internal = true;
-        channels.enable_kcnl = true;
-        channels.enable_slo1_egl19 = true;
-        channels.enable_slo1_unc2 = true;
-        channels.enable_slo2_egl19 = true;
-        channels.enable_slo2_unc2 = true;
+        mechanisms.enable_nca = true;
+        mechanisms.enable_irk = true;
+        mechanisms.enable_kqt3 = true;
+        mechanisms.enable_egl2 = true;
+        mechanisms.enable_shk1 = true;
+        mechanisms.enable_kvs1 = true;
+        mechanisms.enable_shl1 = true;
+        mechanisms.enable_egl36 = true;
+        mechanisms.enable_egl19 = true;
+        mechanisms.enable_cca1 = true;
+        mechanisms.enable_calcium_internal = true;
+        mechanisms.enable_kcnl = true;
+        mechanisms.enable_slo1_egl19 = true;
+        mechanisms.enable_slo1_unc2 = true;
+        mechanisms.enable_slo2_egl19 = true;
+        mechanisms.enable_slo2_unc2 = true;
     } else if (reference == "AVA") {
-        channels.enable_nca = true;
-        channels.enable_shk1 = true;
-        channels.enable_shl1 = true;
-        channels.enable_egl19 = true;
-        channels.enable_cca1 = true;
-        channels.enable_unc2 = true;
-        channels.enable_calcium_internal = true;
-        channels.enable_kcnl = true;
-        channels.enable_slo1_unc2 = true;
+        mechanisms.enable_nca = true;
+        mechanisms.enable_shk1 = true;
+        mechanisms.enable_shl1 = true;
+        mechanisms.enable_egl19 = true;
+        mechanisms.enable_cca1 = true;
+        mechanisms.enable_unc2 = true;
+        mechanisms.enable_calcium_internal = true;
+        mechanisms.enable_kcnl = true;
+        mechanisms.enable_slo1_unc2 = true;
     } else if (reference == "RIM") {
-        channels.enable_nca = true;
-        channels.enable_irk = true;
-        channels.enable_kqt3 = true;
-        channels.enable_egl2 = true;
-        channels.enable_shk1 = true;
-        channels.enable_kvs1 = true;
-        channels.enable_shl1 = true;
-        channels.enable_egl36 = true;
-        channels.enable_slo1_egl19 = true;
-        channels.enable_slo1_unc2 = true;
-        channels.enable_slo2_egl19 = true;
+        mechanisms.enable_nca = true;
+        mechanisms.enable_irk = true;
+        mechanisms.enable_kqt3 = true;
+        mechanisms.enable_egl2 = true;
+        mechanisms.enable_shk1 = true;
+        mechanisms.enable_kvs1 = true;
+        mechanisms.enable_shl1 = true;
+        mechanisms.enable_egl36 = true;
+        mechanisms.enable_slo1_egl19 = true;
+        mechanisms.enable_slo1_unc2 = true;
+        mechanisms.enable_slo2_egl19 = true;
     } else if (reference == "VD5") {
-        channels.enable_nca = true;
-        channels.enable_kqt3 = true;
-        channels.enable_egl2 = true;
-        channels.enable_shk1 = true;
-        channels.enable_shl1 = true;
-        channels.enable_egl36 = true;
-        channels.enable_egl19 = true;
-        channels.enable_cca1 = true;
-        channels.enable_slo1_unc2 = true;
-        channels.enable_slo2_egl19 = true;
-        channels.enable_slo2_unc2 = true;
+        mechanisms.enable_nca = true;
+        mechanisms.enable_kqt3 = true;
+        mechanisms.enable_egl2 = true;
+        mechanisms.enable_shk1 = true;
+        mechanisms.enable_shl1 = true;
+        mechanisms.enable_egl36 = true;
+        mechanisms.enable_egl19 = true;
+        mechanisms.enable_cca1 = true;
+        mechanisms.enable_slo1_unc2 = true;
+        mechanisms.enable_slo2_egl19 = true;
+        mechanisms.enable_slo2_unc2 = true;
     } else {
         throw std::runtime_error("Unknown neuron parameter reference: " + reference);
     }
-    return channels;
+    return mechanisms;
 }
 
 RepresentativeTemplate template_for_reference(const std::string& reference, const std::string& template_data_dir) {
     RepresentativeTemplate result;
-    result.channels = channels_for_reference(reference);
+    result.mechanisms = mechanisms_for_reference(reference);
     if (reference == "AWC") {
         result.cell_file = template_data_dir + "/awcl/AWCL_cell.csv";
         result.initial_voltage_mV = -65.0;
@@ -301,7 +301,7 @@ int main(int argc, char** argv) {
             cpp_neuron::NeuronBuildConfig build_config;
             build_config.name = name;
             build_config.cell_file = representative.cell_file;
-            build_config.channels = representative.channels;
+            build_config.mechanisms = representative.mechanisms;
 
             std::shared_ptr<cpp_neuron::NeuronModel> neuron(cpp_neuron::create_neuron(build_config));
             neuron->set_all_voltages(representative.initial_voltage_mV + 0.1 * (static_cast<double>(idx % 7) - 3.0));

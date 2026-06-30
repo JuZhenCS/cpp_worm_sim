@@ -22,7 +22,7 @@ clear_currents()
 step(dt_ms)
 ```
 
-Synapses do not depend on `PassiveNeuron` internals, channel details, or a specific representative class.
+Synapses do not depend on `MultiCompartmentNeuron` internals, channel details, or a specific representative class.
 
 ## Build
 
@@ -41,6 +41,19 @@ cmake --build build --config Release
 ```
 
 ## Single-Cell Runs
+
+Developer documentation for the single-cell runner:
+
+- [entrypoint and runner flow](docs/runner/main.md)
+- [header architecture](docs/SINGLE_CELL_RUNNER_HEADERS.md)
+- [neuron module reading order](docs/neuron/README.md)
+- implementation notes including
+  [runner](docs/runner/runner.md),
+  [cell loader](docs/neuron/cell_loader.md),
+  [factory](docs/neuron/neuron_factory.md),
+  [multi-compartment solver](docs/neuron/multi_compartment_neuron.md),
+  [clamp protocols](docs/protocol/clamp_protocol.md), and
+  [CSV output](docs/recording/csv_writer.md)
 
 AVAL current clamp:
 

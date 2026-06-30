@@ -8,6 +8,7 @@
 
 namespace cpp_neuron {
 
+// 单个电缆compartment的静态参数、动态状态和已挂载通道。
 struct Compartment {
     int index = 0;
     int parent_index = -1;
@@ -48,13 +49,6 @@ struct Compartment {
 struct Cell {
     std::string name;
     std::vector<Compartment> compartments;
-};
-
-struct TracePoint {
-    double time_ms = 0.0;
-    double soma_v_mV = 0.0;
-    double stimulus = 0.0;
-    double clamp_current_pA = 0.0;
 };
 
 }  // namespace cpp_neuron

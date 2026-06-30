@@ -1,13 +1,15 @@
 #pragma once
 
-#include "cpp_neuron_core/types.hpp"
-
-#include <string>
 #include <vector>
 
 namespace cpp_neuron {
 
-void write_trace_csv(const std::string& path, const std::vector<TracePoint>& trace);
+struct TracePoint {
+    double time_ms = 0.0;
+    double soma_v_mV = 0.0;
+    double stimulus = 0.0;
+    double clamp_current_pA = 0.0;
+};
 
 struct ChannelDiagnosticPoint {
     double time_ms = 0.0;
@@ -61,8 +63,9 @@ struct ChannelDiagnosticPoint {
     double cai_uM_per_um2 = 0.05;
 };
 
-void write_channel_diagnostics_csv(
-    const std::string& path,
-    const std::vector<ChannelDiagnosticPoint>& diagnostics);
+struct ProtocolResult {
+    std::vector<TracePoint> trace;
+    std::vector<ChannelDiagnosticPoint> diagnostics;
+};
 
 }  // namespace cpp_neuron

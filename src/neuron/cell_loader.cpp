@@ -1,4 +1,4 @@
-#include "cpp_neuron_core/cell_loader.hpp"
+#include "cpp_neuron_core/neuron/cell_loader.hpp"
 
 #include <fstream>
 #include <map>

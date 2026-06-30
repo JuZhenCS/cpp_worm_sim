@@ -1,6 +1,6 @@
 #pragma once
 
-#include "cpp_neuron_core/neuron_model.hpp"
+#include "cpp_neuron_core/neuron/neuron_model.hpp"
 #include "cpp_neuron_core/synapse.hpp"
 
 #include <memory>

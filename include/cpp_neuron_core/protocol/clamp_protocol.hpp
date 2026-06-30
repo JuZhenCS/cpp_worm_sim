@@ -1,8 +1,7 @@
 #pragma once
 
-#include "cpp_neuron_core/neuron.hpp"
-#include "cpp_neuron_core/recorder.hpp"
-#include "cpp_neuron_core/types.hpp"
+#include "cpp_neuron_core/neuron/multi_compartment_neuron.hpp"
+#include "cpp_neuron_core/recording/recording.hpp"
 
 #include <vector>
 
@@ -28,19 +27,14 @@ struct SEClampProtocol {
     double series_resistance_MOhm = 29.0;
 };
 
-struct ProtocolResult {
-    std::vector<TracePoint> trace;
-    std::vector<ChannelDiagnosticPoint> diagnostics;
-};
-
-std::vector<TracePoint> run_current_clamp(PassiveNeuron neuron, const IClampProtocol& protocol);
-std::vector<TracePoint> run_seclamp(PassiveNeuron neuron, const SEClampProtocol& protocol);
+std::vector<TracePoint> run_current_clamp(MultiCompartmentNeuron neuron, const IClampProtocol& protocol);
+std::vector<TracePoint> run_seclamp(MultiCompartmentNeuron neuron, const SEClampProtocol& protocol);
 ProtocolResult run_current_clamp_with_diagnostics(
-    PassiveNeuron neuron,
+    MultiCompartmentNeuron neuron,
     const IClampProtocol& protocol,
     std::size_t diagnostic_compartment = 0);
 ProtocolResult run_seclamp_with_diagnostics(
-    PassiveNeuron neuron,
+    MultiCompartmentNeuron neuron,
     const SEClampProtocol& protocol,
     std::size_t diagnostic_compartment = 0);
 

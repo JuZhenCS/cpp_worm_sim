@@ -1,4 +1,4 @@
-#include "cpp_neuron_core/types.hpp"
+#include "cpp_neuron_core/neuron/cell.hpp"
 
 namespace cpp_neuron {
 

@@ -1,6 +1,6 @@
-#include "cpp_neuron_core/neuron.hpp"
+#include "cpp_neuron_core/neuron/multi_compartment_neuron.hpp"
 
-#include "cpp_neuron_core/calcium_internal.hpp"
+#include "cpp_neuron_core/neuron/calcium_internal.hpp"
 #include "cpp_neuron_core/channels/cca1.hpp"
 #include "cpp_neuron_core/channels/egl36.hpp"
 #include "cpp_neuron_core/channels/egl19.hpp"
@@ -23,7 +23,7 @@
 
 namespace cpp_neuron {
 
-PassiveNeuron::PassiveNeuron(Cell cell)
+MultiCompartmentNeuron::MultiCompartmentNeuron(Cell cell)
     : cell_(std::move(cell)),
       injected_current_pA_(cell_.compartments.size(), 0.0),
       zero_conductance_nS_(cell_.compartments.size(), 0.0),
@@ -33,34 +33,34 @@ PassiveNeuron::PassiveNeuron(Cell cell)
       rhs_(cell_.compartments.size(), 0.0),
       solution_(cell_.compartments.size(), 0.0) {
     if (cell_.compartments.empty()) {
-        throw std::runtime_error("PassiveNeuron requires at least one compartment");
+        throw std::runtime_error("MultiCompartmentNeuron requires at least one compartment");
     }
 }
 
-void PassiveNeuron::set_all_voltages(double voltage_mV) {
+void MultiCompartmentNeuron::set_all_voltages(double voltage_mV) {
     for (auto& compartment : cell_.compartments) {
         compartment.voltage_mV = voltage_mV;
     }
 }
 
-void PassiveNeuron::add_current_pA(std::size_t compartment_index, double current_pA) {
+void MultiCompartmentNeuron::add_current_pA(std::size_t compartment_index, double current_pA) {
     injected_current_pA_.at(compartment_index) += current_pA;
 }
 
-void PassiveNeuron::clear_currents() {
+void MultiCompartmentNeuron::clear_currents() {
     std::fill(injected_current_pA_.begin(), injected_current_pA_.end(), 0.0);
 }
 
-void PassiveNeuron::step(double dt_ms) {
+void MultiCompartmentNeuron::step(double dt_ms) {
     step(dt_ms, injected_current_pA_);
     clear_currents();
 }
 
-void PassiveNeuron::step(double dt_ms, const std::vector<double>& injected_current_pA) {
+void MultiCompartmentNeuron::step(double dt_ms, const std::vector<double>& injected_current_pA) {
     step_with_conductance(dt_ms, injected_current_pA, zero_conductance_nS_, zero_reversal_mV_);
 }
 
-void PassiveNeuron::step_with_conductance(
+void MultiCompartmentNeuron::step_with_conductance(
     double dt_ms,
     const std::vector<double>& injected_current_pA,
     const std::vector<double>& extra_conductance_nS,
@@ -249,18 +249,18 @@ void PassiveNeuron::step_with_conductance(
     }
 }
 
-double PassiveNeuron::voltage_mV(std::size_t compartment_index) const {
+double MultiCompartmentNeuron::voltage_mV(std::size_t compartment_index) const {
     return cell_.compartments.at(compartment_index).voltage_mV;
 }
 
-double PassiveNeuron::soma_voltage_mV() const {
+double MultiCompartmentNeuron::soma_voltage_mV() const {
     if (cell_.compartments.size() == 1) {
         return cell_.compartments.front().voltage_mV;
     }
     return 0.5 * (cell_.compartments[0].voltage_mV + cell_.compartments[1].voltage_mV);
 }
 
-void PassiveNeuron::attach_nca_channels() {
+void MultiCompartmentNeuron::attach_nca_channels() {
     for (auto& compartment : cell_.compartments) {
         if (compartment.nca_conductance_nS > 0.0) {
             compartment.channels.push_back(std::make_unique<NcaChannel>(compartment.nca_conductance_nS));
@@ -268,7 +268,7 @@ void PassiveNeuron::attach_nca_channels() {
     }
 }
 
-void PassiveNeuron::attach_irk_channels() {
+void MultiCompartmentNeuron::attach_irk_channels() {
     for (auto& compartment : cell_.compartments) {
         if (compartment.irk_conductance_nS > 0.0) {
             compartment.channels.push_back(std::make_unique<IrkChannel>(compartment.irk_conductance_nS));
@@ -276,7 +276,7 @@ void PassiveNeuron::attach_irk_channels() {
     }
 }
 
-void PassiveNeuron::attach_kqt3_channels() {
+void MultiCompartmentNeuron::attach_kqt3_channels() {
     for (auto& compartment : cell_.compartments) {
         if (compartment.kqt3_conductance_nS > 0.0) {
             compartment.channels.push_back(std::make_unique<Kqt3Channel>(compartment.kqt3_conductance_nS));
@@ -284,7 +284,7 @@ void PassiveNeuron::attach_kqt3_channels() {
     }
 }
 
-void PassiveNeuron::attach_egl2_channels() {
+void MultiCompartmentNeuron::attach_egl2_channels() {
     for (auto& compartment : cell_.compartments) {
         if (compartment.egl2_conductance_nS > 0.0) {
             compartment.channels.push_back(std::make_unique<Egl2Channel>(compartment.egl2_conductance_nS));
@@ -292,7 +292,7 @@ void PassiveNeuron::attach_egl2_channels() {
     }
 }
 
-void PassiveNeuron::attach_shk1_channels() {
+void MultiCompartmentNeuron::attach_shk1_channels() {
     for (auto& compartment : cell_.compartments) {
         if (compartment.shk1_conductance_nS > 0.0) {
             compartment.channels.push_back(std::make_unique<Shk1Channel>(compartment.shk1_conductance_nS));
@@ -300,7 +300,7 @@ void PassiveNeuron::attach_shk1_channels() {
     }
 }
 
-void PassiveNeuron::attach_kvs1_channels() {
+void MultiCompartmentNeuron::attach_kvs1_channels() {
     for (auto& compartment : cell_.compartments) {
         if (compartment.kvs1_conductance_nS > 0.0) {
             compartment.channels.push_back(std::make_unique<Kvs1Channel>(compartment.kvs1_conductance_nS));
@@ -308,7 +308,7 @@ void PassiveNeuron::attach_kvs1_channels() {
     }
 }
 
-void PassiveNeuron::attach_shl1_channels() {
+void MultiCompartmentNeuron::attach_shl1_channels() {
     for (auto& compartment : cell_.compartments) {
         if (compartment.shl1_conductance_nS > 0.0) {
             compartment.channels.push_back(std::make_unique<Shl1Channel>(compartment.shl1_conductance_nS));
@@ -316,7 +316,7 @@ void PassiveNeuron::attach_shl1_channels() {
     }
 }
 
-void PassiveNeuron::attach_egl36_channels() {
+void MultiCompartmentNeuron::attach_egl36_channels() {
     for (auto& compartment : cell_.compartments) {
         if (compartment.egl36_conductance_nS > 0.0) {
             compartment.channels.push_back(std::make_unique<Egl36Channel>(compartment.egl36_conductance_nS));
@@ -324,7 +324,7 @@ void PassiveNeuron::attach_egl36_channels() {
     }
 }
 
-void PassiveNeuron::attach_egl19_channels() {
+void MultiCompartmentNeuron::attach_egl19_channels() {
     for (auto& compartment : cell_.compartments) {
         if (compartment.egl19_conductance_nS > 0.0) {
             compartment.channels.push_back(std::make_unique<Egl19Channel>(compartment.egl19_conductance_nS));
@@ -332,7 +332,7 @@ void PassiveNeuron::attach_egl19_channels() {
     }
 }
 
-void PassiveNeuron::attach_cca1_channels() {
+void MultiCompartmentNeuron::attach_cca1_channels() {
     for (auto& compartment : cell_.compartments) {
         if (compartment.cca1_conductance_nS > 0.0) {
             compartment.channels.push_back(std::make_unique<Cca1Channel>(compartment.cca1_conductance_nS));
@@ -340,7 +340,7 @@ void PassiveNeuron::attach_cca1_channels() {
     }
 }
 
-void PassiveNeuron::attach_unc2_channels() {
+void MultiCompartmentNeuron::attach_unc2_channels() {
     for (auto& compartment : cell_.compartments) {
         if (compartment.unc2_conductance_nS > 0.0) {
             compartment.channels.push_back(std::make_unique<Unc2Channel>(compartment.unc2_conductance_nS));
@@ -348,7 +348,7 @@ void PassiveNeuron::attach_unc2_channels() {
     }
 }
 
-void PassiveNeuron::attach_kcnl_channels() {
+void MultiCompartmentNeuron::attach_kcnl_channels() {
     for (auto& compartment : cell_.compartments) {
         if (compartment.kcnl_conductance_nS > 0.0) {
             compartment.channels.push_back(std::make_unique<KcnlChannel>(compartment.kcnl_conductance_nS));
@@ -356,7 +356,7 @@ void PassiveNeuron::attach_kcnl_channels() {
     }
 }
 
-void PassiveNeuron::attach_slo1_egl19_channels() {
+void MultiCompartmentNeuron::attach_slo1_egl19_channels() {
     for (auto& compartment : cell_.compartments) {
         if (compartment.slo1_egl19_conductance_nS > 0.0) {
             compartment.channels.push_back(std::make_unique<SloCoupledChannel>(
@@ -365,7 +365,7 @@ void PassiveNeuron::attach_slo1_egl19_channels() {
     }
 }
 
-void PassiveNeuron::attach_slo1_unc2_channels() {
+void MultiCompartmentNeuron::attach_slo1_unc2_channels() {
     for (auto& compartment : cell_.compartments) {
         if (compartment.slo1_unc2_conductance_nS > 0.0) {
             compartment.channels.push_back(std::make_unique<Slo1Unc2Channel>(compartment.slo1_unc2_conductance_nS));
@@ -373,7 +373,7 @@ void PassiveNeuron::attach_slo1_unc2_channels() {
     }
 }
 
-void PassiveNeuron::attach_slo2_egl19_channels() {
+void MultiCompartmentNeuron::attach_slo2_egl19_channels() {
     for (auto& compartment : cell_.compartments) {
         if (compartment.slo2_egl19_conductance_nS > 0.0) {
             compartment.channels.push_back(std::make_unique<SloCoupledChannel>(
@@ -382,7 +382,7 @@ void PassiveNeuron::attach_slo2_egl19_channels() {
     }
 }
 
-void PassiveNeuron::attach_slo2_unc2_channels() {
+void MultiCompartmentNeuron::attach_slo2_unc2_channels() {
     for (auto& compartment : cell_.compartments) {
         if (compartment.slo2_unc2_conductance_nS > 0.0) {
             compartment.channels.push_back(std::make_unique<SloCoupledChannel>(
@@ -391,19 +391,19 @@ void PassiveNeuron::attach_slo2_unc2_channels() {
     }
 }
 
-void PassiveNeuron::enable_calcium_internal() {
+void MultiCompartmentNeuron::enable_calcium_internal() {
     for (auto& compartment : cell_.compartments) {
         compartment.calcium_internal_enabled = true;
         compartment.cai_uM_per_um2 = 0.05;
     }
 }
 
-double PassiveNeuron::leak_current_pA(std::size_t compartment_index) const {
+double MultiCompartmentNeuron::leak_current_pA(std::size_t compartment_index) const {
     const auto& c = cell_.compartments.at(compartment_index);
     return c.leak_conductance_nS * (c.voltage_mV - c.leak_reversal_mV);
 }
 
-double PassiveNeuron::axial_current_pA(std::size_t compartment_index) const {
+double MultiCompartmentNeuron::axial_current_pA(std::size_t compartment_index) const {
     const std::size_t n = cell_.compartments.size();
     const auto& c = cell_.compartments.at(compartment_index);
     double current = 0.0;
@@ -422,7 +422,7 @@ double PassiveNeuron::axial_current_pA(std::size_t compartment_index) const {
     return current;
 }
 
-double PassiveNeuron::ion_current_pA(std::size_t compartment_index) const {
+double MultiCompartmentNeuron::ion_current_pA(std::size_t compartment_index) const {
     const auto& c = cell_.compartments.at(compartment_index);
     double current = 0.0;
     for (const auto& channel : c.channels) {
@@ -431,7 +431,7 @@ double PassiveNeuron::ion_current_pA(std::size_t compartment_index) const {
     return current;
 }
 
-double PassiveNeuron::channel_current_pA(std::size_t compartment_index, const std::string& channel_name) const {
+double MultiCompartmentNeuron::channel_current_pA(std::size_t compartment_index, const std::string& channel_name) const {
     const auto& c = cell_.compartments.at(compartment_index);
     double current = 0.0;
     for (const auto& channel : c.channels) {

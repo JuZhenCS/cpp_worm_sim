@@ -1,4 +1,4 @@
-#include "cpp_neuron_core/protocol.hpp"
+#include "cpp_neuron_core/protocol/clamp_protocol.hpp"
 
 #include <cmath>
 #include <utility>
@@ -12,7 +12,7 @@ bool in_window(double t_ms, double start_ms, double duration_ms) {
 }
 
 ChannelDiagnosticPoint sample_diagnostics(
-    const PassiveNeuron& neuron,
+    const MultiCompartmentNeuron& neuron,
     double time_ms,
     std::size_t compartment_index) {
     const auto& compartment = neuron.cell().compartments.at(compartment_index);
@@ -71,12 +71,12 @@ ChannelDiagnosticPoint sample_diagnostics(
 
 }  // namespace
 
-std::vector<TracePoint> run_current_clamp(PassiveNeuron neuron, const IClampProtocol& protocol) {
+std::vector<TracePoint> run_current_clamp(MultiCompartmentNeuron neuron, const IClampProtocol& protocol) {
     return run_current_clamp_with_diagnostics(std::move(neuron), protocol).trace;
 }
 
 ProtocolResult run_current_clamp_with_diagnostics(
-    PassiveNeuron neuron,
+    MultiCompartmentNeuron neuron,
     const IClampProtocol& protocol,
     std::size_t diagnostic_compartment) {
     neuron.set_all_voltages(protocol.v_init_mV);
@@ -106,12 +106,12 @@ ProtocolResult run_current_clamp_with_diagnostics(
     return result;
 }
 
-std::vector<TracePoint> run_seclamp(PassiveNeuron neuron, const SEClampProtocol& protocol) {
+std::vector<TracePoint> run_seclamp(MultiCompartmentNeuron neuron, const SEClampProtocol& protocol) {
     return run_seclamp_with_diagnostics(std::move(neuron), protocol).trace;
 }
 
 ProtocolResult run_seclamp_with_diagnostics(
-    PassiveNeuron neuron,
+    MultiCompartmentNeuron neuron,
     const SEClampProtocol& protocol,
     std::size_t diagnostic_compartment) {
     neuron.set_all_voltages(protocol.v_init_mV);

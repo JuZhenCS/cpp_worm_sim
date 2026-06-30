@@ -1,4 +1,4 @@
-#include "cpp_neuron_core/recorder.hpp"
+#include "cpp_neuron_core/recording/csv_writer.hpp"
 
 #include <fstream>
 #include <stdexcept>

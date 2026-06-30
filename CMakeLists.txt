@@ -19,13 +19,13 @@ set(CMAKE_CXX_EXTENSIONS OFF)       # 禁用GCC扩展（保证标准兼容）
 # 4. 核心库：神经系统模块
 # -------------------------------
 add_library(cpp_neuron_core
-        src/types.cpp
-        src/neuron.cpp
-        src/neuron_factory.cpp
-        src/protocol.cpp
-        src/recorder.cpp
-        src/cell_loader.cpp
-        src/calcium_internal.cpp
+        src/neuron/cell.cpp
+        src/neuron/multi_compartment_neuron.cpp
+        src/neuron/neuron_factory.cpp
+        src/protocol/clamp_protocol.cpp
+        src/recording/csv_writer.cpp
+        src/neuron/cell_loader.cpp
+        src/neuron/calcium_internal.cpp
         src/synapse.cpp
         src/synapse_loader.cpp
         src/channels/nca.cpp
@@ -50,14 +50,26 @@ add_library(cpp_neuron_core
 target_include_directories(cpp_neuron_core PUBLIC include)
 
 # -------------------------------
-# 6. 主运行程序（可执行文件）
+# 6. 单神经元runner支持库（供主程序和测试复用）
 # -------------------------------
-add_executable(cpp_neuron_runner src/main.cpp)
-target_link_libraries(cpp_neuron_runner PRIVATE cpp_neuron_core)
+add_library(cpp_neuron_runner_support STATIC
+    src/runner/runner.cpp
+)
+target_include_directories(cpp_neuron_runner_support PUBLIC src)
+target_link_libraries(cpp_neuron_runner_support PUBLIC cpp_neuron_core)
 
 # -------------------------------
-# 7. 测试程序（单元测试）
+# 7. 主运行程序（可执行文件）
 # -------------------------------
+add_executable(cpp_neuron_runner src/main.cpp)
+target_link_libraries(cpp_neuron_runner PRIVATE cpp_neuron_runner_support)
+
+# -------------------------------
+# 8. 测试程序（单元测试）
+# -------------------------------
+add_executable(runner_tests tests/test_runner.cpp)
+target_link_libraries(runner_tests PRIVATE cpp_neuron_runner_support)
+
 add_executable(synapse_tests tests/test_synapse.cpp)
 target_link_libraries(synapse_tests PRIVATE cpp_neuron_core)
 
@@ -66,8 +78,12 @@ target_compile_definitions(synapse_tests PRIVATE
         CPP_WORM_SIM_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}"
 )
 
+enable_testing()
+add_test(NAME runner_tests COMMAND runner_tests)
+add_test(NAME synapse_tests COMMAND synapse_tests)
+
 # -------------------------------
-# 8. smoke测试（快速验证功能）
+# 9. smoke测试（快速验证功能）
 # -------------------------------
 add_executable(synapse_smoke tests/synapse_smoke.cpp)
 target_link_libraries(synapse_smoke PRIVATE cpp_neuron_core)
@@ -77,7 +93,7 @@ target_compile_definitions(synapse_smoke PRIVATE
 )
 
 # -------------------------------
-# 9. OpenMP并行支持（如果系统支持）
+# 10. OpenMP并行支持（如果系统支持）
 # -------------------------------
 find_package(OpenMP QUIET)
 
