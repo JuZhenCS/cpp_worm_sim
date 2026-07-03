@@ -25,18 +25,18 @@ ProtocolResult run_current_clamp_with_diagnostics(
     const IClampProtocol& protocol,
     std::size_t diagnostic_compartment) {
     neuron.set_all_voltages(protocol.v_init_mV);
-    const int steps = static_cast<int>(std::ceil(protocol.tstop_ms / protocol.dt_ms));
+    const int steps = static_cast<int>(std::ceil(protocol.tstop_ms / protocol.dt_ms)); // 仿真步数 = 向上取整(总仿真时间 / 每步时间)
     ProtocolResult result;
-    result.trace.reserve(static_cast<std::size_t>(steps));
+    result.trace.reserve(static_cast<std::size_t>(steps)); // 给 std::vector 预分配内存。预计 trace/diagnostics 会存 steps 条记录。reserve 是性能优化，不改变 vector 当前元素数量。
     result.diagnostics.reserve(static_cast<std::size_t>(steps));
 
     for (int step = 0; step < steps; ++step) {
-        const double t_ms = step * protocol.dt_ms;
-        const double current_pA = in_window(t_ms, protocol.delay_ms, protocol.duration_ms)
+        const double t_ms = step * protocol.dt_ms; // 计算当前步开始时刻：t_k = k * dt
+        const double current_pA = in_window(t_ms, protocol.delay_ms, protocol.duration_ms) // 决定当前时刻是否注入电流。
                                       ? protocol.amplitude_pA
                                       : 0.0;
-        std::vector<double> injected(neuron.size(), 0.0);
-        if (neuron.size() >= 2) {
+        std::vector<double> injected(neuron.size(), 0.0); // 创建一个长度等于 compartment 数量的 vector injected。每个元素代表一个 compartment 上的外部注入电流
+        if (neuron.size() >= 2) { // 如果至少两个 compartment，就把 current clamp 电流平分给前两个 compartment。
             injected[0] = 0.5 * current_pA;
             injected[1] = 0.5 * current_pA;
         } else {

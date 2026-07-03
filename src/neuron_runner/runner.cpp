@@ -126,7 +126,7 @@ void run(const RunnerConfig& config) {
     ProtocolResult result;
     switch (config.protocol) {
     case ProtocolKind::IClamp:
-        result = run_current_clamp_with_diagnostics(*neuron, config.iclamp);
+        result = run_current_clamp_with_diagnostics(*neuron, config.iclamp); // 会先跳转到 include\neuron\core\multi_compartment_ neuron.hpp的地14行 是因为 *neuron 被按值传参，触发了 MultiCompartmentNeuron 的复制。真正的仿真逻辑还在 clamp_protocol.cpp。
         break;
     case ProtocolKind::SEClamp:
         result = run_seclamp_with_diagnostics(*neuron, config.seclamp);
