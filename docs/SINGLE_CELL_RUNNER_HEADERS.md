@@ -39,19 +39,19 @@ I/O边界
 
 所有active ion channel的抽象接口，负责更新门控状态、接收可选钙浓度、计算电流、暴露诊断状态并通过 `clone()` 支持多态深拷贝。具体channel类只依赖该接口。
 
-### neuron/cell.hpp
+### neuron/core/cell.hpp
 
 定义 `Compartment` 和 `Cell`。它们是多隔室细胞的领域数据，不再混放trace或CSV类型。`Compartment` 拥有 `unique_ptr<Channel>`，因此实现了通道对象的深拷贝。
 
-### neuron/neuron_model.hpp
+### neuron/core/neuron_model.hpp
 
 网络和突触层使用的最小神经元抽象，只暴露名称、compartment数量、电压、电流注入和时间推进。synapse层不依赖具体多隔室实现。
 
-### neuron/multi_compartment_neuron.hpp
+### neuron/core/multi_compartment_neuron.hpp
 
 `NeuronModel` 的具体实现，负责持有 `Cell`、多隔室隐式求解、外部电流、额外conductance、通道挂载、内部钙更新和诊断电流。原文件名 `neuron.hpp` 过于宽泛，现使用具体类名。
 
-### neuron/neuron_factory.hpp
+### neuron/core/neuron_factory.hpp
 
 神经元装配接口，定义 `NeuronMechanismConfig`、`NeuronBuildConfig` 以及具体/抽象创建函数。配置不叫channel config，因为其中还包含内部钙动力学开关。
 
@@ -63,7 +63,7 @@ I/O边界
 
 单细胞clamp用例接口，定义 `IClampProtocol`、`SEClampProtocol` 及两种运行函数。原文件名 `protocol.hpp` 范围大于实际功能。
 
-### neuron/cell_loader.hpp
+### neuron/core/cell_loader.hpp
 
 从CSV加载 `Cell` 的I/O边界。CSV表头、必填字段和默认值等细节都留在实现文件。
 
@@ -71,7 +71,7 @@ I/O边界
 
 把 `recording.hpp` 中的数据写为trace CSV和diagnostics CSV。它不参与仿真，也不定义记录类型。
 
-### neuron/calcium_internal.hpp
+### neuron/core/calcium_internal.hpp
 
 内部钙浓度的一阶动力学计算器。它不拥有compartment，由 `MultiCompartmentNeuron` 在时间步中调用。
 

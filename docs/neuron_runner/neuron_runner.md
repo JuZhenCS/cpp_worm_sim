@@ -1,6 +1,6 @@
 # neuron_runner.cpp 开发说明
 
-对应 [neuron_runner.cpp](../../src/neuron_runner/neuron_runner.cpp) 和 [neuron_runner.hpp](../../src/neuron_runner/neuron_runner.hpp)。
+对应 [neuron_runner.cpp](../../src/neuron_runner/runner.cpp) 和 [neuron_runner.hpp](../../src/neuron_runner/runner.hpp)。
 
 ## 职责
 

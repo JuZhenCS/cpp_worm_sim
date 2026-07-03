@@ -1,6 +1,6 @@
 #include "neuron/protocol/clamp_protocol.hpp"
 
-#include "neuron/neuron/diagnostics.hpp"
+#include "neuron/core/diagnostics.hpp"
 
 #include <cmath>
 #include <utility>

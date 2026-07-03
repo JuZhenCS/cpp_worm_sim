@@ -5,8 +5,8 @@
 | 文件 | 职责 |
 | --- | --- |
 | [main.cpp](../../src/main.cpp) | 进程入口和异常边界 |
-| [neuron_runner.hpp](../../src/neuron_runner/neuron_runner.hpp) | runner 配置模型与公开函数 |
-| [neuron_runner.cpp](../../src/neuron_runner/neuron_runner.cpp) | CLI 解析、protocol 配置、执行和输出 |
+| [neuron_runner.hpp](../../src/neuron_runner/runner.hpp) | runner 配置模型与公开函数 |
+| [neuron_runner.cpp](../../src/neuron_runner/runner.cpp) | CLI 解析、protocol 配置、执行和输出 |
 
 核心原则是：`main.cpp` 只负责启动应用，不包含业务细节。
 

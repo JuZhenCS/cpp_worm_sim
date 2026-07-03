@@ -24,6 +24,7 @@ add_library(neuron_core
         src/neuron/cable_solver.cpp
         src/neuron/channel_installer.cpp
         src/neuron/diagnostics.cpp
+        src/neuron/mechanism_registry.cpp
         src/neuron/neuron_factory.cpp
         src/protocol/clamp_protocol.cpp
         src/recording/csv_writer.cpp
@@ -56,7 +57,7 @@ target_include_directories(neuron_core PUBLIC include)
 # 6. 单神经元runner支持库（供主程序和测试复用）
 # -------------------------------
 add_library(neuron_runner_support STATIC
-    src/neuron_runner/neuron_runner.cpp
+        src/neuron_runner/runner.cpp
 )
 target_include_directories(neuron_runner_support PUBLIC src)
 target_link_libraries(neuron_runner_support PUBLIC neuron_core)

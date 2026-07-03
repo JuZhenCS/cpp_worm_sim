@@ -16,17 +16,17 @@
 `MultiCompartmentNeuron` no longer owns every low-level helper directly. Three responsibilities were split out:
 
 - `CableSolver`
-  - `include/neuron/neuron/cable_solver.hpp`
+  - `include/neuron/core/cable_solver.hpp`
   - `src/neuron/cable_solver.cpp`
   - Owns implicit cable-equation matrix buffers, inverse-cache logic, and direct solve fallback.
 
 - Channel installation helpers
-  - `include/neuron/neuron/channel_installer.hpp`
+  - `include/neuron/core/channel_installer.hpp`
   - `src/neuron/channel_installer.cpp`
   - Keeps channel construction out of `MultiCompartmentNeuron`.
 
 - Diagnostics helpers
-  - `include/neuron/neuron/diagnostics.hpp`
+  - `include/neuron/core/diagnostics.hpp`
   - `src/neuron/diagnostics.cpp`
   - Moves protocol diagnostic sampling out of `clamp_protocol.cpp`.
 

@@ -1,12 +1,13 @@
-#include "neuron_runner/neuron_runner.hpp"
+#include "neuron_runner/runner.hpp"
 
+#include "neuron/core/mechanism_config.hpp"
+#include "neuron/core/mechanism_registry.hpp"
 #include "neuron/recording/csv_writer.hpp"
 
-#include <array>
 #include <stdexcept>
 #include <string>
 
-namespace neuron::neuron_runner {
+namespace neuron::runner {
 
 namespace {
 
@@ -35,36 +36,12 @@ bool has_arg(int argc, char** argv, const std::string& name) {
     return false;
 }
 
-// bool Type::* 是成员指针；它把一个 CLI flag 映射到配置对象中的 bool 字段。
-struct MechanismFlagBinding {
-    const char* flag;
-    bool NeuronMechanismConfig::* enabled;
-};
-
 NeuronMechanismConfig parse_mechanism_config(int argc, char** argv) {
-    static constexpr std::array<MechanismFlagBinding, 17> bindings{{
-        {"--enable-nca", &NeuronMechanismConfig::enable_nca},
-        {"--enable-irk", &NeuronMechanismConfig::enable_irk},
-        {"--enable-kqt3", &NeuronMechanismConfig::enable_kqt3},
-        {"--enable-egl2", &NeuronMechanismConfig::enable_egl2},
-        {"--enable-shk1", &NeuronMechanismConfig::enable_shk1},
-        {"--enable-kvs1", &NeuronMechanismConfig::enable_kvs1},
-        {"--enable-shl1", &NeuronMechanismConfig::enable_shl1},
-        {"--enable-egl36", &NeuronMechanismConfig::enable_egl36},
-        {"--enable-egl19", &NeuronMechanismConfig::enable_egl19},
-        {"--enable-cca1", &NeuronMechanismConfig::enable_cca1},
-        {"--enable-unc2", &NeuronMechanismConfig::enable_unc2},
-        {"--enable-calcium-internal", &NeuronMechanismConfig::enable_calcium_internal},
-        {"--enable-kcnl", &NeuronMechanismConfig::enable_kcnl},
-        {"--enable-slo1-egl19", &NeuronMechanismConfig::enable_slo1_egl19},
-        {"--enable-slo1-unc2", &NeuronMechanismConfig::enable_slo1_unc2},
-        {"--enable-slo2-egl19", &NeuronMechanismConfig::enable_slo2_egl19},
-        {"--enable-slo2-unc2", &NeuronMechanismConfig::enable_slo2_unc2},
-    }};
-
     NeuronMechanismConfig mechanisms;
-    for (const auto& binding : bindings) {
-        mechanisms.*(binding.enabled) = has_arg(argc, argv, binding.flag);
+    for (const auto& mechanism : all_mechanisms()) {
+        if (has_arg(argc, argv, mechanism.cli_flag)) {
+            mechanisms.*(mechanism.enabled) = true;
+        }
     }
     return mechanisms;
 }

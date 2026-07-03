@@ -44,11 +44,11 @@ cmake --build build --config Release
 
 Developer documentation for the single-cell runner:
 
-- [entrypoint and runner flow](docs/runner/main.md)
+- [entrypoint and runner flow](docs/neuron_runner/main.md)
 - [header architecture](docs/SINGLE_CELL_RUNNER_HEADERS.md)
 - [neuron module reading order](docs/neuron/README.md)
 - implementation notes including
-  [runner](docs/runner/runner.md),
+  [runner](docs/neuron_runner/neuron_runner.md),
   [cell loader](docs/neuron/cell_loader.md),
   [factory](docs/neuron/neuron_factory.md),
   [multi-compartment solver](docs/neuron/multi_compartment_neuron.md),

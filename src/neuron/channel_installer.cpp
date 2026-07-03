@@ -1,4 +1,4 @@
-#include "neuron/neuron/channel_installer.hpp"
+#include "neuron/core/channel_installer.hpp"
 
 #include "neuron/channels/cca1.hpp"
 #include "neuron/channels/egl36.hpp"

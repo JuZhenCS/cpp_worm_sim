@@ -1,6 +1,6 @@
 # calcium_internal.cpp 开发说明
 
-对应 [calcium_internal.cpp](../../src/neuron/calcium_internal.cpp) 和 [calcium_internal.hpp](../../include/neuron/neuron/calcium_internal.hpp)。
+对应 [calcium_internal.cpp](../../src/neuron/calcium_internal.cpp) 和 [calcium_internal.hpp](../../include/neuron/core/calcium_internal.hpp)。
 
 ## 职责
 

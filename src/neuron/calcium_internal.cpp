@@ -1,4 +1,4 @@
-#include "neuron/neuron/calcium_internal.hpp"
+#include "neuron/core/calcium_internal.hpp"
 
 #include <cmath>
 

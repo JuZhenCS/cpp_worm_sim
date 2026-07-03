@@ -1,11 +1,11 @@
 #pragma once
 
-#include "neuron/neuron/neuron_factory.hpp"
+#include "neuron/core/neuron_factory.hpp"
 #include "neuron/protocol/clamp_protocol.hpp"
 
 #include <string>
 
-namespace neuron::neuron_runner {
+namespace neuron::runner {
 
 enum class ProtocolKind {
     IClamp,

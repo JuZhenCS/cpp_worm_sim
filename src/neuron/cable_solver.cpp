@@ -1,4 +1,4 @@
-#include "neuron/neuron/cable_solver.hpp"
+#include "neuron/core/cable_solver.hpp"
 
 #include <algorithm>
 #include <cmath>

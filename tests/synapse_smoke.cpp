@@ -1,5 +1,6 @@
-#include "neuron/neuron/multi_compartment_neuron.hpp"
-#include "neuron/neuron/neuron_factory.hpp"
+#include "neuron/core/mechanism_config.hpp"
+#include "neuron/core/multi_compartment_neuron.hpp"
+#include "neuron/core/neuron_factory.hpp"
 #include "neuron/synapse_loader.hpp"
 
 #include <algorithm>

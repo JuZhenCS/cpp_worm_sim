@@ -1,4 +1,4 @@
-#include "neuron/neuron/diagnostics.hpp"
+#include "neuron/core/diagnostics.hpp"
 
 #include <stdexcept>
 

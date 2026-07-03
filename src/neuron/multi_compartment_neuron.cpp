@@ -1,8 +1,8 @@
-#include "neuron/neuron/multi_compartment_neuron.hpp"
+#include "neuron/core/multi_compartment_neuron.hpp"
 
-#include "neuron/neuron/calcium_internal.hpp"
-#include "neuron/neuron/channel_installer.hpp"
-#include "neuron/neuron/diagnostics.hpp"
+#include "neuron/core/calcium_internal.hpp"
+#include "neuron/core/channel_installer.hpp"
+#include "neuron/core/diagnostics.hpp"
 
 #include <algorithm>
 #include <stdexcept>

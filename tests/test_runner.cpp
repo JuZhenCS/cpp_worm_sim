@@ -1,4 +1,4 @@
-#include "neuron_runner/neuron_runner.hpp"
+#include "neuron_runner/runner.hpp"
 
 #include <iostream>
 #include <stdexcept>
@@ -9,11 +9,11 @@ namespace {
 
 void require(bool condition) {
     if (!condition) {
-        throw std::runtime_error("runner test requirement failed");
+        throw std::runtime_error("neuron_runner test requirement failed");
     }
 }
 
-neuron::neuron_runner::RunnerConfig parse(std::initializer_list<const char*> raw_args) {
+neuron::runner::RunnerConfig parse(std::initializer_list<const char*> raw_args) {
     std::vector<std::string> storage;
     storage.reserve(raw_args.size());
     for (const char* arg : raw_args) {
@@ -26,7 +26,7 @@ neuron::neuron_runner::RunnerConfig parse(std::initializer_list<const char*> raw
         argv.push_back(arg.data());
     }
 
-    return neuron::neuron_runner::parse_config(static_cast<int>(argv.size()), argv.data());
+    return neuron::runner::parse_config(static_cast<int>(argv.size()), argv.data());
 }
 
 void test_defaults() {
@@ -34,7 +34,7 @@ void test_defaults() {
 
     require(config.neuron.name == "AIYL");
     require(config.neuron.cell_file == "../data/aiyl/AIYL_cell.csv");
-    require(config.protocol == neuron::neuron_runner::ProtocolKind::IClamp);
+    require(config.protocol == neuron::runner::ProtocolKind::IClamp);
     require(config.iclamp.v_init_mV == -45.0);
     require(config.iclamp.amplitude_pA == 10.0);
     require(config.output == "trace.csv");
@@ -91,7 +91,7 @@ void test_seclamp_overrides() {
         "5",
     });
 
-    require(config.protocol == neuron::neuron_runner::ProtocolKind::SEClamp);
+    require(config.protocol == neuron::runner::ProtocolKind::SEClamp);
     require(config.seclamp.v_command_mV == 70.0);
     require(config.seclamp.dt_ms == 0.05);
     require(config.seclamp.tstop_ms == 5.0);
@@ -136,6 +136,6 @@ int main() {
     test_unknown_protocol_rejected();
     test_missing_value_rejected();
     test_nonpositive_timing_rejected();
-    std::cout << "runner tests passed\n";
+    std::cout << "neuron_runner tests passed\n";
     return 0;
 }

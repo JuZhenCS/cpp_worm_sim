@@ -1,6 +1,6 @@
 #pragma once
 
-#include "neuron/neuron/multi_compartment_neuron.hpp"
+#include "neuron/core/multi_compartment_neuron.hpp"
 #include "neuron/recording/recording.hpp"
 
 #include <vector>

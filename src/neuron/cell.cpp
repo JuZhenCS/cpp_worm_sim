@@ -1,4 +1,4 @@
-#include "neuron/neuron/cell.hpp"
+#include "neuron/core/cell.hpp"
 
 namespace neuron {
 

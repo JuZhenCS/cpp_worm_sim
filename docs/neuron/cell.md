@@ -1,6 +1,6 @@
 # cell.cpp 开发说明
 
-对应 [cell.cpp](../../src/neuron/cell.cpp) 和 [cell.hpp](../../include/neuron/neuron/cell.hpp)。
+对应 [cell.cpp](../../src/neuron/cell.cpp) 和 [cell.hpp](../../include/neuron/core/cell.hpp)。
 
 ## 职责
 
