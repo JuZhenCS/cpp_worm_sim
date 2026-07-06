@@ -9,7 +9,7 @@ namespace neuron {
 // synapse / network 层只依赖这些方法，不需要知道具体神经元是否是 MultiCompartmentNeuron 或别的实现。
 class NeuronModel {
 public:
-    virtual ~NeuronModel() = default;
+    virtual ~NeuronModel() = default; // 当你通过基类指针删除子类对象时，能正确调用子类的析构函数。
 
     // 运行时名称和 compartment 数量。
     virtual const std::string& name() const = 0;

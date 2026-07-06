@@ -1,56 +1,58 @@
-# Neuron模块阅读顺序
+# Neuron模块文档索引
 
-文件名不使用 `1_`、`2_` 前缀。调用关系不是固定直线，推荐阅读顺序记录在这里。
+`docs/neuron/` 对应代码里的 `include/neuron/` 和 `src/neuron/`。子目录尽量和代码目录保持一致。
 
 ## 目录对应
 
 ```text
-include/neuron/core/   公共头文件
-src/neuron/                       实现文件
-docs/neuron/                      开发说明
+include/neuron/core/       src/neuron/*.cpp                 docs/neuron/core/
+include/neuron/channels/   src/neuron/channels/             docs/neuron/channels/
+include/neuron/protocol/   src/neuron/protocol/             docs/neuron/protocol/
+include/neuron/recording/  src/neuron/recording/            docs/neuron/recording/
+src/neuron/neuron_runner/  src/neuron/main.cpp              docs/neuron/neuron_runner/
 ```
 
 ## 推荐阅读顺序
 
-1. [neuron_model.hpp](../../include/neuron/core/neuron_model.hpp)
-   先理解网络和突触层依赖的最小抽象。
+1. [status.md](status.md)
+   先看当前五个代表细胞的可用状态。
 
-2. [cell.hpp](../../include/neuron/core/cell.hpp) 和 [cell.md](cell.md)
-   理解compartment、cell、通道所有权和深拷贝。
+2. [core/neuron_model.hpp](../../include/neuron/core/neuron_model.hpp)
+   网络和突触层依赖的最小 neuron 抽象。
 
-3. [calcium_internal.hpp](../../include/neuron/core/calcium_internal.hpp) 和 [calcium_internal.md](calcium_internal.md)
-   理解被多隔室模型调用的内部钙子模型。
+3. [core/cell.md](core/cell.md)
+   compartment、cell、通道所有权和深拷贝。
 
-4. [multi_compartment_neuron.hpp](../../include/neuron/core/multi_compartment_neuron.hpp) 和 [multi_compartment_neuron.md](multi_compartment_neuron.md)
-   理解具体neuron状态、step入口和矩阵求解。
+4. [core/calcium_internal.md](core/calcium_internal.md)
+   多隔室模型调用的内部钙动力学。
 
-5. [cell_loader.hpp](../../include/neuron/core/cell_loader.hpp) 和 [cell_loader.md](cell_loader.md)
-   理解外部CSV如何变成 `Cell`。
+5. [core/multi_compartment_neuron.md](core/multi_compartment_neuron.md)
+   具体 neuron 状态、step 入口和矩阵求解。
 
-6. [neuron_factory.hpp](../../include/neuron/core/neuron_factory.hpp) 和 [neuron_factory.md](neuron_factory.md)
-   最后理解loader、具体模型和mechanism配置如何装配。
+6. [core/cell_loader.md](core/cell_loader.md)
+   外部 CSV 如何变成 `Cell`。
 
-## 运行调用关系
+7. [core/neuron_factory.md](core/neuron_factory.md)
+   loader、具体模型和 mechanism 配置如何装配。
 
-```text
-runner
-  -> neuron_factory
-       -> cell_loader
-            -> Cell
-       -> MultiCompartmentNeuron
-       -> enable mechanisms
+8. [channels/README.md](channels/README.md)
+   active channel 实现边界。
 
-clamp_protocol
-  -> MultiCompartmentNeuron
+9. [protocol/clamp_protocol.md](protocol/clamp_protocol.md)
+   单细胞 clamp protocol。
 
-synapse/network
-  -> NeuronModel
-```
+10. [recording/csv_writer.md](recording/csv_writer.md)
+    单细胞 trace/diagnostics CSV 输出。
+
+11. [neuron_runner/main.md](neuron_runner/main.md)
+    `neuron_runner` 可执行入口和 CLI 编排。
 
 ## 修改边界
 
-- 模型积分改 `multi_compartment_neuron`；
-- CSV cell格式改 `cell_loader`；
-- 创建和机制选择改 `neuron_factory`；
-- 网络通用契约改 `neuron_model`；
-- 不要让neuron模块依赖runner、CLI或CSV输出。
+- neuron 状态和积分改 `src/neuron/multi_compartment_neuron.cpp`；
+- cell CSV 格式改 `src/neuron/cell_loader.cpp`；
+- active channel 安装改 `src/neuron/channel_installer.cpp` 和 `src/neuron/channels/`；
+- 创建和机制选择改 `src/neuron/neuron_factory.cpp`；
+- 单细胞 protocol 改 `src/neuron/protocol/`；
+- 单细胞输出改 `src/neuron/recording/`；
+- 单细胞 CLI 改 `src/neuron/main.cpp` 和 `src/neuron/neuron_runner/`。

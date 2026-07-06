@@ -1,14 +1,16 @@
 {
   "data_sources": {
-    "fenyves_s1": "E:\\1 PhD work\\C.elegans simulation\\code\\C.elegans.network\\fenyves 2020 S Data\\S1_Data.xlsx",
-    "cook_si2": "E:\\1 PhD work\\C.elegans simulation\\code\\C.elegans.network\\cook 2019 SI\\41586_2019_1352_MOESM6_ESM SI2.xlsx",
-    "cook_si5": "E:\\1 PhD work\\C.elegans simulation\\code\\C.elegans.network\\cook 2019 SI\\41586_2019_1352_MOESM9_ESM SI5.xlsx"
+    "source_root": "E:\\1 PhD work\\C.elegans simulation\\code\\draft\\C.elegans.network",
+    "fenyves_s1": "E:\\1 PhD work\\C.elegans simulation\\code\\draft\\C.elegans.network\\fenyves 2020 S Data\\S1_Data.xlsx",
+    "cook_si2": "E:\\1 PhD work\\C.elegans simulation\\code\\draft\\C.elegans.network\\cook 2019 SI\\41586_2019_1352_MOESM6_ESM SI2.xlsx",
+    "cook_si5": "E:\\1 PhD work\\C.elegans simulation\\code\\draft\\C.elegans.network\\cook 2019 SI\\41586_2019_1352_MOESM9_ESM SI5.xlsx",
+    "baai_table4_text": "E:\\1 PhD work\\C.elegans simulation\\code\\draft\\multi-compartment neuron 0416\\baaiworm_pdf_text\\pdf_1.txt"
   },
   "chemical_connections": 5001,
   "chemical_connections_by_source": {
-    "cook_si5_and_fenyves": 3508,
+    "cook_si5_and_fenyves": 3516,
     "cook_si5_only": 1363,
-    "fenyves_only": 130
+    "fenyves_only": 122
   },
   "chemical_connections_by_class": {
     "neuron_to_neuron": 3831,
@@ -28,10 +30,10 @@
     "complex": 477
   },
   "chemical_connections_by_polarity_policy": {
-    "fenyves_sign_prediction": 2131,
+    "fenyves_sign_prediction": 2135,
     "fenyves_no_pred_default_inhibitory": 1422,
     "missing_fenyves_default_inhibitory": 1363,
-    "fenyves_only_connection_with_sign": 85
+    "fenyves_only_connection_with_sign": 81
   },
   "chemical_components": 5478,
   "chemical_components_neuron_neuron": 4308,

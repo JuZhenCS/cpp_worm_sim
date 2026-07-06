@@ -9,9 +9,9 @@ Completed for SynapseModel-v0:
 3. Fenyves chemical sign prediction is exported as excitatory/inhibitory graded components.
 4. Cook SI5 gap junctions are exported as ohmic coupling rows.
 5. C++ loaders build a `SynapseNetwork` from the exported CSV files.
-6. Full 302-neuron smoke test maps every neuron to one of the five multi-compartment templates.
+6. `worm_brain_runner` maps every neuron to one of the five multi-compartment templates.
 7. Full-network stability gates have been run at 1 s, 10 s, and 60 s with `dt=0.5 ms`.
-8. Stability output includes min/max voltage, peak chemical/gap currents, NaN count, exploding neuron list, and top current edges.
+8. Diagnostics summary includes min/max voltage, peak chemical/gap currents, NaN count, exploding neuron list, and top current edges. Diagnostics are disabled by default.
 
 Immediate next engineering steps:
 
@@ -22,10 +22,10 @@ Immediate next engineering steps:
    Use a small subset such as AVA/RIM/AIY/VD-related nodes and verify loaded component counts, voltage ranges, and gap current conservation over a longer interval.
 
 3. Add a stricter stability regression target.
-   The current 1 s/10 s/60 s gates are executable checks. A useful next gate is a committed expected-range test for min/max voltages and top current edge identities.
+   The current 1 s/10 s/60 s runner checks are executable checks. A useful next gate is a committed expected-range test for min/max voltages and top current edge identities.
 
-4. Move shared CSV parsing helpers out of test code if another executable needs them.
-   The production C++ loaders already parse synapse CSVs; `synapse_smoke.cpp` also parses the BAAIWorm reference CSV for test construction.
+4. Move shared CSV parsing helpers out of brain builder if another executable needs them.
+   The production C++ loaders already parse synapse CSVs; `brain_network_builder.cpp` also parses the BAAIWorm reference CSV for network construction.
 
 5. Keep v0 scope constrained.
    Do not add Wang transmitter mechanics, monoamine modulation, neuropeptides, STDP, receptor-specific kinetics, or body/environment coupling until the Cook/Fenyves synapse layer is stable.
@@ -33,11 +33,13 @@ Immediate next engineering steps:
 Current validation commands:
 
 ```powershell
-cmake -S . -B build_synapse_tests -DCMAKE_BUILD_TYPE=Release
-cmake --build build_synapse_tests --target synapse_tests synapse_smoke
-.\build_synapse_tests\synapse_tests.exe
-.\build_synapse_tests\synapse_smoke.exe --tstop-ms 10 --dt-ms 0.1
-.\build_synapse_tests\synapse_smoke.exe --tstop-ms 1000 --dt-ms 0.5 --top-current-edges 10
-.\build_synapse_tests\synapse_smoke.exe --tstop-ms 10000 --dt-ms 0.5 --top-current-edges 10
-.\build_synapse_tests\synapse_smoke.exe --tstop-ms 60000 --dt-ms 0.5 --top-current-edges 10
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build --target worm_brain_runner --config Release
+.\build\worm_brain_runner.exe --diagnostics summary --tstop-ms 10 --dt-ms 0.1
+.\build\worm_brain_runner.exe --diagnostics summary --tstop-ms 1000 --dt-ms 0.5 --top-current-edges 10
+.\build\worm_brain_runner.exe --diagnostics summary --tstop-ms 10000 --dt-ms 0.5 --top-current-edges 10
+.\build\worm_brain_runner.exe --diagnostics summary --tstop-ms 60000 --dt-ms 0.5 --top-current-edges 10
 ```
+
+
+

@@ -1,5 +1,5 @@
 connection_id,pre,post,connection_class,connection_source,anatomical_weight,cook_weight,fenyves_weight,weight_source,fenyves_polarity_raw,effective_polarity,polarity_policy,active_in_v0,pre_is_neuron,post_is_neuron,has_cook_si5_connection,has_fenyves_sign_row,scored_contact_count,has_scored_contact
-ADAL__ADAL,ADAL,ADAL,neuron_to_neuron,cook_si5_and_fenyves,6.0,6.0,6.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,0.0,False
+ADAL__ADAL,ADAL,ADAL,neuron_to_neuron,cook_si5_and_fenyves,6.0,6.0,6.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 ADAL__ADLL,ADAL,ADLL,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,2.0,True
 ADAL__AIAL,ADAL,AIAL,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,0.0,False
 ADAL__AIBL,ADAL,AIBL,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,1.0,True
@@ -40,7 +40,7 @@ ADAR__SMDVL,ADAR,SMDVL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook201
 ADAR__URXR,ADAR,URXR,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 ADAR__URYDR,ADAR,URYDR,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 ADEL__ADAL,ADEL,ADAL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
-ADEL__ADEL,ADEL,ADEL,neuron_to_neuron,cook_si5_only,2.0,2.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,True,True,False,0.0,False
+ADEL__ADEL,ADEL,ADEL,neuron_to_neuron,cook_si5_only,2.0,2.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,True,True,False,2.0,True
 ADEL__ADER,ADEL,ADER,neuron_to_neuron,cook_si5_and_fenyves,5.0,5.0,5.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,3.0,True
 ADEL__ALML,ADEL,ALML,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 ADEL__AVAL,ADEL,AVAL,neuron_to_neuron,cook_si5_and_fenyves,7.0,7.0,7.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
@@ -128,7 +128,7 @@ ADFL__SMBVL,ADFL,SMBVL,neuron_to_neuron,cook_si5_and_fenyves,9.0,9.0,9.0,Cook201
 ADFL__SMDVL,ADFL,SMDVL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 ADFL__URXL,ADFL,URXL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 ADFR__ADAR,ADFR,ADAR,neuron_to_neuron,cook_si5_and_fenyves,4.0,4.0,4.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
-ADFR__ADFR,ADFR,ADFR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,0.0,False
+ADFR__ADFR,ADFR,ADFR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 ADFR__AFDR,ADFR,AFDR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 ADFR__AIYR,ADFR,AIYR,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,2.0,True
 ADFR__AIZR,ADFR,AIZR,neuron_to_neuron,cook_si5_and_fenyves,37.0,37.0,37.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,12.0,True
@@ -174,7 +174,7 @@ ADLL__RIPL,ADLL,RIPL,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_
 ADLL__RIR,ADLL,RIR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 ADLL__SMBVL,ADLL,SMBVL,neuron_to_neuron,cook_si5_and_fenyves,5.0,5.0,5.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,2.0,True
 ADLR__ADAR,ADLR,ADAR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
-ADLR__ADLR,ADLR,ADLR,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,0.0,False
+ADLR__ADLR,ADLR,ADLR,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,2.0,True
 ADLR__AIAR,ADLR,AIAR,neuron_to_neuron,cook_si5_and_fenyves,22.0,22.0,22.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,11.0,True
 ADLR__AIBR,ADLR,AIBR,neuron_to_neuron,cook_si5_and_fenyves,27.0,27.0,27.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,15.0,True
 ADLR__ASER,ADLR,ASER,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
@@ -199,7 +199,7 @@ ADLR__SIBVL,ADLR,SIBVL,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook201
 ADLR__SMBVR,ADLR,SMBVR,neuron_to_neuron,cook_si5_and_fenyves,5.0,5.0,5.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,2.0,True
 ADLR__URBR,ADLR,URBR,neuron_to_neuron,cook_si5_and_fenyves,6.0,6.0,6.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,3.0,True
 ADLR__URXR,ADLR,URXR,neuron_to_neuron,cook_si5_and_fenyves,8.0,8.0,8.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,6.0,True
-AFDL__AFDL,AFDL,AFDL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,0.0,False
+AFDL__AFDL,AFDL,AFDL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 AFDL__AIBL,AFDL,AIBL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 AFDL__AINR,AFDL,AINR,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,2.0,True
 AFDL__AIYL,AFDL,AIYL,neuron_to_neuron,cook_si5_and_fenyves,25.0,25.0,25.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,11.0,True
@@ -230,7 +230,7 @@ AIAL__RIR,AIAL,RIR,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI
 AIAL__RMGL,AIAL,RMGL,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,0.0,False
 AIAR__ADAR,AIAR,ADAR,neuron_to_neuron,cook_si5_and_fenyves,4.0,4.0,4.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 AIAR__ADLR,AIAR,ADLR,neuron_to_neuron,cook_si5_and_fenyves,10.0,10.0,10.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,6.0,True
-AIAR__AIAR,AIAR,AIAR,neuron_to_neuron,cook_si5_only,1.0,1.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,True,True,False,0.0,False
+AIAR__AIAR,AIAR,AIAR,neuron_to_neuron,cook_si5_only,1.0,1.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,True,True,False,1.0,True
 AIAR__AIBR,AIAR,AIBR,neuron_to_neuron,cook_si5_and_fenyves,33.0,33.0,33.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,19.0,True
 AIAR__AIZR,AIAR,AIZR,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 AIAR__ASER,AIAR,ASER,neuron_to_neuron,cook_si5_and_fenyves,5.0,5.0,5.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,3.0,True
@@ -241,8 +241,8 @@ AIAR__AWAR,AIAR,AWAR,neuron_to_neuron,cook_si5_and_fenyves,4.0,4.0,4.0,Cook2019_
 AIAR__AWCL,AIAR,AWCL,neuron_to_neuron,cook_si5_and_fenyves,6.0,6.0,6.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,4.0,True
 AIAR__AWCR,AIAR,AWCR,neuron_to_neuron,cook_si5_and_fenyves,6.0,6.0,6.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,4.0,True
 AIAR__RIFR,AIAR,RIFR,neuron_to_neuron,cook_si5_and_fenyves,10.0,10.0,10.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,4.0,True
-AIBL__AIBL,AIBL,AIBL,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,0.0,False
-AIBL__AIZR,AIBL,AIZR,neuron_to_neuron,fenyves_only,7.0,,7.0,Fenyves2020_only,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,False,True,3.0,True
+AIBL__AIBL,AIBL,AIBL,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,1.0,True
+AIBL__AIZR,AIBL,AIZR,neuron_to_neuron,cook_si5_and_fenyves,7.0,7.0,7.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,3.0,True
 AIBL__ASHL,AIBL,ASHL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 AIBL__ASHR,AIBL,ASHR,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 AIBL__AVAL,AIBL,AVAL,neuron_to_neuron,cook_si5_and_fenyves,5.0,5.0,5.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,3.0,True
@@ -315,7 +315,7 @@ AIML__SMBVL,AIML,SMBVL,neuron_to_neuron,cook_si5_and_fenyves,4.0,4.0,4.0,Cook201
 AIML__URXL,AIML,URXL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 AIMR__ADFR,AIMR,ADFR,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 AIMR__AIAR,AIMR,AIAR,neuron_to_neuron,cook_si5_and_fenyves,10.0,10.0,10.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,7.0,True
-AIMR__AIMR,AIMR,AIMR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,0.0,False
+AIMR__AIMR,AIMR,AIMR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 AIMR__ALA,AIMR,ALA,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 AIMR__ASGR,AIMR,ASGR,neuron_to_neuron,cook_si5_and_fenyves,6.0,6.0,6.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,3.0,True
 AIMR__ASJR,AIMR,ASJR,neuron_to_neuron,cook_si5_and_fenyves,4.0,4.0,4.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,3.0,True
@@ -357,7 +357,7 @@ AINR__AFDR,AINR,AFDR,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_
 AINR__AIAL,AINR,AIAL,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,0.0,False
 AINR__AIBL,AINR,AIBL,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,2.0,True
 AINR__AINL,AINR,AINL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
-AINR__AINR,AINR,AINR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,0.0,False
+AINR__AINR,AINR,AINR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 AINR__ASEL,AINR,ASEL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 AINR__ASER,AINR,ASER,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,2.0,True
 AINR__ASGL,AINR,ASGL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
@@ -415,7 +415,7 @@ AIZL__RIML,AIZL,RIML,neuron_to_neuron,cook_si5_and_fenyves,35.0,35.0,35.0,Cook20
 AIZL__SMBDL,AIZL,SMBDL,neuron_to_neuron,cook_si5_and_fenyves,24.0,24.0,24.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,12.0,True
 AIZL__SMBVL,AIZL,SMBVL,neuron_to_neuron,cook_si5_and_fenyves,21.0,21.0,21.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,10.0,True
 AIZL__SMDVL,AIZL,SMDVL,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,1.0,True
-AIZL__URYDL,AIZL,URYDL,neuron_to_neuron,fenyves_only,3.0,,3.0,Fenyves2020_only,+,+,fenyves_only_connection_with_sign,True,True,True,False,True,2.0,True
+AIZL__URYDL,AIZL,URYDL,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,2.0,True
 AIZL__VB02,AIZL,VB02,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 AIZL__vBWML7,AIZL,vBWML7,neuron_to_non_neuron_or_muscle,cook_si5_only,1.0,1.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,1.0,True
 AIZR__ADFR,AIZR,ADFR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
@@ -449,7 +449,7 @@ ALA__RMDR,ALA,RMDR,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI
 ALA__exc_cell,ALA,exc_cell,neuron_to_non_neuron_or_muscle,cook_si5_only,15.0,15.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,0.0,False
 ALA__hyp,ALA,hyp,neuron_to_non_neuron_or_muscle,cook_si5_only,18.0,18.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,0.0,False
 ALML__AIML,ALML,AIML,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
-ALML__ALML,ALML,ALML,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,0.0,False
+ALML__ALML,ALML,ALML,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 ALML__AVDR,ALML,AVDR,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 ALML__AVEL,ALML,AVEL,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,2.0,True
 ALML__BDUL,ALML,BDUL,neuron_to_neuron,cook_si5_and_fenyves,15.0,15.0,15.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,9.0,True
@@ -544,7 +544,7 @@ AS04__dBWML11,AS04,dBWML11,neuron_to_non_neuron_or_muscle,cook_si5_only,5.0,5.0,
 AS04__dBWML12,AS04,dBWML12,neuron_to_non_neuron_or_muscle,cook_si5_only,2.0,2.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,0.0,False
 AS04__dBWMR11,AS04,dBWMR11,neuron_to_non_neuron_or_muscle,cook_si5_only,4.0,4.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,0.0,False
 AS04__dBWMR12,AS04,dBWMR12,neuron_to_non_neuron_or_muscle,cook_si5_only,5.0,5.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,0.0,False
-AS05__AS05,AS05,AS05,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,0.0,False
+AS05__AS05,AS05,AS05,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 AS05__DA04,AS05,DA04,neuron_to_neuron,cook_si5_only,1.0,1.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,True,True,False,1.0,True
 AS05__DD03,AS05,DD03,neuron_to_neuron,cook_si5_only,1.0,1.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,True,True,False,1.0,True
 AS05__PVDL,AS05,PVDL,neuron_to_neuron,cook_si5_only,1.0,1.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,True,True,False,1.0,True
@@ -658,7 +658,7 @@ ASHR__ADFR,ASHR,ADFR,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_
 ASHR__ADLR,ASHR,ADLR,neuron_to_neuron,cook_si5_and_fenyves,13.0,13.0,13.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,6.0,True
 ASHR__AIAR,ASHR,AIAR,neuron_to_neuron,cook_si5_and_fenyves,28.0,28.0,28.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,13.0,True
 ASHR__AIBR,ASHR,AIBR,neuron_to_neuron,cook_si5_and_fenyves,7.0,7.0,7.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,3.0,True
-ASHR__ASHR,ASHR,ASHR,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,0.0,False
+ASHR__ASHR,ASHR,ASHR,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,2.0,True
 ASHR__AVAR,ASHR,AVAR,neuron_to_neuron,cook_si5_and_fenyves,10.0,10.0,10.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,9.0,True
 ASHR__AVBR,ASHR,AVBR,neuron_to_neuron,cook_si5_and_fenyves,6.0,6.0,6.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,6.0,True
 ASHR__AVDL,ASHR,AVDL,neuron_to_neuron,cook_si5_and_fenyves,27.0,27.0,27.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,14.0,True
@@ -1068,7 +1068,7 @@ AVG__AVDR,AVG,AVDR,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI
 AVG__AVEL,AVG,AVEL,neuron_to_neuron,cook_si5_only,2.0,2.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,True,True,False,2.0,True
 AVG__AVER,AVG,AVER,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 AVG__AVFL,AVG,AVFL,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,2.0,True
-AVG__AVG,AVG,AVG,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,0.0,False
+AVG__AVG,AVG,AVG,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 AVG__AVJL,AVG,AVJL,neuron_to_neuron,cook_si5_and_fenyves,7.0,7.0,7.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,5.0,True
 AVG__AVJR,AVG,AVJR,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,2.0,True
 AVG__DA08,AVG,DA08,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,1.0,True
@@ -1189,7 +1189,7 @@ AVKL__vBWML11,AVKL,vBWML11,neuron_to_non_neuron_or_muscle,cook_si5_only,3.0,3.0,
 AVKL__vBWMR11,AVKL,vBWMR11,neuron_to_non_neuron_or_muscle,cook_si5_only,3.0,3.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,1.0,True
 AVKL__vBWMR6,AVKL,vBWMR6,neuron_to_non_neuron_or_muscle,cook_si5_only,2.0,2.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,1.0,True
 AVKR__AVKL,AVKR,AVKL,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
-AVKR__BDUL,AVKR,BDUL,neuron_to_neuron,fenyves_only,3.0,,3.0,Fenyves2020_only,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,False,True,1.0,True
+AVKR__BDUL,AVKR,BDUL,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 AVKR__PVM,AVKR,PVM,neuron_to_neuron,cook_si5_only,2.0,2.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,True,True,False,0.0,False
 AVKR__PVPL,AVKR,PVPL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 AVKR__PVQL,AVKR,PVQL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
@@ -1433,7 +1433,7 @@ CEPDL__URYDL,CEPDL,URYDL,neuron_to_neuron,cook_si5_and_fenyves,7.0,7.0,7.0,Cook2
 CEPDL__dBWML5,CEPDL,dBWML5,neuron_to_non_neuron_or_muscle,cook_si5_only,2.0,2.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,1.0,True
 CEPDR__AVEL,CEPDR,AVEL,neuron_to_neuron,cook_si5_and_fenyves,9.0,9.0,9.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,6.0,True
 CEPDR__BDUR,CEPDR,BDUR,neuron_to_neuron,cook_si5_and_fenyves,5.0,5.0,5.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,3.0,True
-CEPDR__CEPDR,CEPDR,CEPDR,neuron_to_neuron,cook_si5_and_fenyves,6.0,6.0,6.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,0.0,False
+CEPDR__CEPDR,CEPDR,CEPDR,neuron_to_neuron,cook_si5_and_fenyves,6.0,6.0,6.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,3.0,True
 CEPDR__IL1DR,CEPDR,IL1DR,neuron_to_neuron,cook_si5_and_fenyves,15.0,15.0,15.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,7.0,True
 CEPDR__IL1R,CEPDR,IL1R,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 CEPDR__OLLR,CEPDR,OLLR,neuron_to_neuron,cook_si5_and_fenyves,13.0,13.0,13.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,7.0,True
@@ -1962,7 +1962,7 @@ HSNL__AVJL,HSNL,AVJL,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_
 HSNL__AWAR,HSNL,AWAR,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,2.0,True
 HSNL__AWBL,HSNL,AWBL,neuron_to_neuron,cook_si5_and_fenyves,5.0,5.0,5.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,2.0,True
 HSNL__AWBR,HSNL,AWBR,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,2.0,True
-HSNL__HSNL,HSNL,HSNL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,0.0,False
+HSNL__HSNL,HSNL,HSNL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 HSNL__HSNR,HSNL,HSNR,neuron_to_neuron,cook_si5_and_fenyves,5.0,5.0,5.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,3.0,True
 HSNL__PVQL,HSNL,PVQL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 HSNL__RIFL,HSNL,RIFL,neuron_to_neuron,cook_si5_and_fenyves,9.0,9.0,9.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,4.0,True
@@ -2162,7 +2162,7 @@ IL1DL__dBWML2,IL1DL,dBWML2,neuron_to_non_neuron_or_muscle,cook_si5_only,4.0,4.0,
 IL1DL__dBWML3,IL1DL,dBWML3,neuron_to_non_neuron_or_muscle,cook_si5_only,5.0,5.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,3.0,True
 IL1DL__dBWML6,IL1DL,dBWML6,neuron_to_non_neuron_or_muscle,cook_si5_only,9.0,9.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,2.0,True
 IL1DL__dBWMR7,IL1DL,dBWMR7,neuron_to_non_neuron_or_muscle,cook_si5_only,2.0,2.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,1.0,True
-IL1DR__IL1DR,IL1DR,IL1DR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,0.0,False
+IL1DR__IL1DR,IL1DR,IL1DR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 IL1DR__IL1R,IL1DR,IL1R,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,2.0,True
 IL1DR__IL2DR,IL1DR,IL2DR,neuron_to_neuron,cook_si5_and_fenyves,5.0,5.0,5.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,3.0,True
 IL1DR__OLLR,IL1DR,OLLR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
@@ -2212,7 +2212,7 @@ IL1R__dBWMR5,IL1R,dBWMR5,neuron_to_non_neuron_or_muscle,cook_si5_only,13.0,13.0,
 IL1R__vBWMR4,IL1R,vBWMR4,neuron_to_non_neuron_or_muscle,cook_si5_only,19.0,19.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,7.0,True
 IL1VL__AVL,IL1VL,AVL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,0.0,False
 IL1VL__IL1L,IL1VL,IL1L,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
-IL1VL__IL1VL,IL1VL,IL1VL,neuron_to_neuron,cook_si5_and_fenyves,5.0,5.0,5.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,0.0,False
+IL1VL__IL1VL,IL1VL,IL1VL,neuron_to_neuron,cook_si5_and_fenyves,5.0,5.0,5.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 IL1VL__OLQVL,IL1VL,OLQVL,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 IL1VL__RIPL,IL1VL,RIPL,neuron_to_neuron,cook_si5_and_fenyves,13.0,13.0,13.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,5.0,True
 IL1VL__RMDDL,IL1VL,RMDDL,neuron_to_neuron,cook_si5_and_fenyves,30.0,30.0,30.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,14.0,True
@@ -2235,7 +2235,7 @@ IL1VR__vBWMR4,IL1VR,vBWMR4,neuron_to_non_neuron_or_muscle,cook_si5_only,24.0,24.
 IL2DL__AUAL,IL2DL,AUAL,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 IL2DL__AVBR,IL2DL,AVBR,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 IL2DL__IL1DL,IL2DL,IL1DL,neuron_to_neuron,cook_si5_and_fenyves,17.0,17.0,17.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,10.0,True
-IL2DL__IL2DL,IL2DL,IL2DL,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,0.0,False
+IL2DL__IL2DL,IL2DL,IL2DL,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 IL2DL__OLQDL,IL2DL,OLQDL,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,2.0,True
 IL2DL__RIBL,IL2DL,RIBL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 IL2DL__RIH,IL2DL,RIH,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,2.0,True
@@ -2387,7 +2387,7 @@ M4__I4,M4,I4,neuron_to_neuron,cook_si5_and_fenyves,5.0,5.0,5.0,Cook2019_SI5,no p
 M4__I5,M4,I5,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 M4__M2L,M4,M2L,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,2.0,True
 M4__M3L,M4,M3L,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,2.0,True
-M4__M4,M4,M4,neuron_to_neuron,fenyves_only,15.0,,15.0,Fenyves2020_only,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,False,True,0.0,False
+M4__M4,M4,M4,neuron_to_neuron,cook_si5_and_fenyves,15.0,15.0,15.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,11.0,True
 M4__MCL,M4,MCL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 M4__g1AL,M4,g1AL,neuron_to_non_neuron_or_muscle,cook_si5_only,43.0,43.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,19.0,True
 M4__g1AR,M4,g1AR,neuron_to_non_neuron_or_muscle,cook_si5_only,49.0,49.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,21.0,True
@@ -2457,7 +2457,7 @@ OLLL__AVER,OLLL,AVER,neuron_to_neuron,cook_si5_and_fenyves,53.0,53.0,53.0,Cook20
 OLLL__CEPDL,OLLL,CEPDL,neuron_to_neuron,cook_si5_and_fenyves,5.0,5.0,5.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,3.0,True
 OLLL__CEPVL,OLLL,CEPVL,neuron_to_neuron,cook_si5_and_fenyves,14.0,14.0,14.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,6.0,True
 OLLL__IL1VL,OLLL,IL1VL,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
-OLLL__OLLL,OLLL,OLLL,neuron_to_neuron,cook_si5_and_fenyves,4.0,4.0,4.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,0.0,False
+OLLL__OLLL,OLLL,OLLL,neuron_to_neuron,cook_si5_and_fenyves,4.0,4.0,4.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,2.0,True
 OLLL__RIBL,OLLL,RIBL,neuron_to_neuron,cook_si5_and_fenyves,24.0,24.0,24.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,13.0,True
 OLLL__RMDDL,OLLL,RMDDL,neuron_to_neuron,cook_si5_and_fenyves,22.0,22.0,22.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,10.0,True
 OLLL__RMDL,OLLL,RMDL,neuron_to_neuron,cook_si5_and_fenyves,6.0,6.0,6.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,1.0,True
@@ -2475,7 +2475,7 @@ OLLR__CEPVR,OLLR,CEPVR,neuron_to_neuron,cook_si5_and_fenyves,16.0,16.0,16.0,Cook
 OLLR__IL1DR,OLLR,IL1DR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 OLLR__IL1VR,OLLR,IL1VR,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 OLLR__IL2R,OLLR,IL2R,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
-OLLR__OLLR,OLLR,OLLR,neuron_to_neuron,cook_si5_and_fenyves,4.0,4.0,4.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,0.0,False
+OLLR__OLLR,OLLR,OLLR,neuron_to_neuron,cook_si5_and_fenyves,4.0,4.0,4.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,2.0,True
 OLLR__OLQDR,OLLR,OLQDR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 OLLR__RIBR,OLLR,RIBR,neuron_to_neuron,cook_si5_and_fenyves,21.0,21.0,21.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,13.0,True
 OLLR__RIS,OLLR,RIS,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,1.0,True
@@ -2704,7 +2704,7 @@ PVCL__DB07,PVCL,DB07,neuron_to_neuron,cook_si5_and_fenyves,5.0,5.0,5.0,Cook2019_
 PVCL__DVA,PVCL,DVA,neuron_to_neuron,cook_si5_and_fenyves,4.0,4.0,4.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,3.0,True
 PVCL__PDEL,PVCL,PDEL,neuron_to_neuron,cook_si5_only,1.0,1.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,True,True,False,1.0,True
 PVCL__PDER,PVCL,PDER,neuron_to_neuron,fenyves_only,1.0,,1.0,Fenyves2020_only,-,-,fenyves_only_connection_with_sign,True,True,True,False,True,0.0,False
-PVCL__PVCL,PVCL,PVCL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,0.0,False
+PVCL__PVCL,PVCL,PVCL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 PVCL__PVCR,PVCL,PVCR,neuron_to_neuron,cook_si5_and_fenyves,10.0,10.0,10.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,3.0,True
 PVCL__RID,PVCL,RID,neuron_to_neuron,cook_si5_and_fenyves,12.0,12.0,12.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,4.0,True
 PVCL__RIS,PVCL,RIS,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,2.0,True
@@ -2837,7 +2837,7 @@ PVNR__HSNR,PVNR,HSNR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_
 PVNR__PQR,PVNR,PQR,neuron_to_neuron,cook_si5_and_fenyves,4.0,4.0,4.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,3.0,True
 PVNR__PVCR,PVNR,PVCR,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,2.0,True
 PVNR__PVDR,PVNR,PVDR,neuron_to_neuron,cook_si5_and_fenyves,5.0,5.0,5.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,0.0,False
-PVNR__PVNR,PVNR,PVNR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,0.0,False
+PVNR__PVNR,PVNR,PVNR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 PVNR__PVR,PVNR,PVR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,0.0,False
 PVNR__PVT,PVNR,PVT,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,3.0,True
 PVNR__PVWL,PVNR,PVWL,neuron_to_neuron,cook_si5_and_fenyves,9.0,9.0,9.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,5.0,True
@@ -3020,7 +3020,7 @@ RIAR__CEPVL,RIAR,CEPVL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook201
 RIAR__CEPVR,RIAR,CEPVR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 RIAR__IL1R,RIAR,IL1R,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 RIAR__RIAL,RIAR,RIAL,neuron_to_neuron,cook_si5_and_fenyves,38.0,38.0,38.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,19.0,True
-RIAR__RIAR,RIAR,RIAR,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,0.0,False
+RIAR__RIAR,RIAR,RIAR,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 RIAR__RIBR,RIAR,RIBR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 RIAR__RIVL,RIAR,RIVL,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 RIAR__RIVR,RIAR,RIVR,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,2.0,True
@@ -3241,7 +3241,7 @@ RIML__AVKR,RIML,AVKR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_
 RIML__RIAL,RIML,RIAL,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 RIML__RIBL,RIML,RIBL,neuron_to_neuron,cook_si5_and_fenyves,9.0,9.0,9.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,8.0,True
 RIML__RICR,RIML,RICR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,1.0,True
-RIML__RIML,RIML,RIML,neuron_to_neuron,cook_si5_and_fenyves,11.0,11.0,11.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,0.0,False
+RIML__RIML,RIML,RIML,neuron_to_neuron,cook_si5_and_fenyves,11.0,11.0,11.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,2.0,True
 RIML__RIMR,RIML,RIMR,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,2.0,True
 RIML__RMDL,RIML,RMDL,neuron_to_neuron,cook_si5_and_fenyves,9.0,9.0,9.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,5.0,True
 RIML__RMDR,RIML,RMDR,neuron_to_neuron,cook_si5_and_fenyves,21.0,21.0,21.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,10.0,True
@@ -3286,7 +3286,7 @@ RIPL__OLLL,RIPL,OLLL,neuron_to_neuron,cook_si5_only,4.0,4.0,,Cook2019_SI5,,-,mis
 RIPL__OLQDR,RIPL,OLQDR,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 RIPL__OLQVL,RIPL,OLQVL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 RIPL__RIH,RIPL,RIH,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
-RIPL__RIPL,RIPL,RIPL,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,2.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,0.0,False
+RIPL__RIPL,RIPL,RIPL,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,2.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 RIPL__hyp,RIPL,hyp,neuron_to_non_neuron_or_muscle,cook_si5_only,3.0,3.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,0.0,False
 RIPL__mc2DL,RIPL,mc2DL,neuron_to_non_neuron_or_muscle,cook_si5_only,2.0,2.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,0.0,False
 RIPL__pm3VL,RIPL,pm3VL,neuron_to_non_neuron_or_muscle,cook_si5_only,4.0,4.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,0.0,False
@@ -3342,7 +3342,7 @@ RIS__RIBL,RIS,RIBL,neuron_to_neuron,cook_si5_and_fenyves,8.0,8.0,8.0,Cook2019_SI
 RIS__RIBR,RIS,RIBR,neuron_to_neuron,cook_si5_and_fenyves,18.0,18.0,18.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,11.0,True
 RIS__RIML,RIS,RIML,neuron_to_neuron,cook_si5_and_fenyves,10.0,10.0,10.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,6.0,True
 RIS__RIMR,RIS,RIMR,neuron_to_neuron,cook_si5_and_fenyves,15.0,15.0,15.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,6.0,True
-RIS__RIS,RIS,RIS,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,0.0,False
+RIS__RIS,RIS,RIS,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 RIS__RMDDL,RIS,RMDDL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 RIS__RMDDR,RIS,RMDDR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 RIS__RMDL,RIS,RMDL,neuron_to_neuron,cook_si5_and_fenyves,10.0,10.0,10.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,4.0,True
@@ -3358,7 +3358,7 @@ RIS__URYVR,RIS,URYVR,neuron_to_neuron,cook_si5_and_fenyves,5.0,5.0,5.0,Cook2019_
 RIVL__ASGL,RIVL,ASGL,neuron_to_neuron,fenyves_only,1.0,,1.0,Fenyves2020_only,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,False,True,0.0,False
 RIVL__ASJL,RIVL,ASJL,neuron_to_neuron,fenyves_only,1.0,,1.0,Fenyves2020_only,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,False,True,0.0,False
 RIVL__RIAL,RIVL,RIAL,neuron_to_neuron,cook_si5_and_fenyves,5.0,5.0,5.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,3.0,True
-RIVL__RIAR,RIVL,RIAR,neuron_to_neuron,fenyves_only,2.0,,2.0,Fenyves2020_only,-,-,fenyves_only_connection_with_sign,True,True,True,False,True,1.0,True
+RIVL__RIAR,RIVL,RIAR,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 RIVL__RIVR,RIVL,RIVR,neuron_to_neuron,cook_si5_only,1.0,1.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,True,True,False,1.0,True
 RIVL__RMDL,RIVL,RMDL,neuron_to_neuron,cook_si5_and_fenyves,4.0,4.0,4.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,3.0,True
 RIVL__RMDVL,RIVL,RMDVL,neuron_to_neuron,cook_si5_and_fenyves,5.0,5.0,5.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,3.0,True
@@ -3495,7 +3495,7 @@ RMDVR__IL1L,RMDVR,IL1L,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook201
 RMDVR__OLQVL,RMDVR,OLQVL,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,2.0,True
 RMDVR__RIAR,RMDVR,RIAR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 RMDVR__RMDDL,RMDVR,RMDDL,neuron_to_neuron,cook_si5_and_fenyves,43.0,43.0,43.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,20.0,True
-RMDVR__RMDVR,RMDVR,RMDVR,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,0.0,False
+RMDVR__RMDVR,RMDVR,RMDVR,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,2.0,True
 RMDVR__SIAVL,RMDVR,SIAVL,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,2.0,True
 RMDVR__SIBDR,RMDVR,SIBDR,neuron_to_neuron,fenyves_only,1.0,,1.0,Fenyves2020_only,complex,complex,fenyves_only_connection_with_sign,True,True,True,False,True,0.0,False
 RMDVR__SIBVL,RMDVR,SIBVL,neuron_to_neuron,fenyves_only,1.0,,1.0,Fenyves2020_only,complex,complex,fenyves_only_connection_with_sign,True,True,True,False,True,0.0,False
@@ -3516,7 +3516,7 @@ RMDVR__vBWMR6,RMDVR,vBWMR6,neuron_to_non_neuron_or_muscle,cook_si5_only,2.0,2.0,
 RMDVR__vBWMR7,RMDVR,vBWMR7,neuron_to_non_neuron_or_muscle,cook_si5_only,2.0,2.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,2.0,True
 RMED__RIBL,RMED,RIBL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 RMED__RIBR,RMED,RIBR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
-RMED__RMED,RMED,RMED,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,0.0,False
+RMED__RMED,RMED,RMED,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 RMED__SMDDL,RMED,SMDDL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 RMED__SMDDR,RMED,SMDDR,neuron_to_neuron,cook_si5_and_fenyves,4.0,4.0,4.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 RMED__vBWML2,RMED,vBWML2,neuron_to_non_neuron_or_muscle,cook_si5_only,15.0,15.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,4.0,True
@@ -3533,7 +3533,7 @@ RMEL__dBWMR3,RMEL,dBWMR3,neuron_to_non_neuron_or_muscle,cook_si5_only,22.0,22.0,
 RMEL__dBWMR5,RMEL,dBWMR5,neuron_to_non_neuron_or_muscle,cook_si5_only,7.0,7.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,6.0,True
 RMEL__vBWMR4,RMEL,vBWMR4,neuron_to_non_neuron_or_muscle,cook_si5_only,9.0,9.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,5.0,True
 RMER__IL1L,RMER,IL1L,neuron_to_neuron,cook_si5_and_fenyves,4.0,4.0,4.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,3.0,True
-RMER__RMER,RMER,RMER,neuron_to_neuron,cook_si5_and_fenyves,5.0,5.0,5.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,0.0,False
+RMER__RMER,RMER,RMER,neuron_to_neuron,cook_si5_and_fenyves,5.0,5.0,5.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,3.0,True
 RMER__RMHR,RMER,RMHR,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,3.0,True
 RMER__dBWML3,RMER,dBWML3,neuron_to_non_neuron_or_muscle,cook_si5_only,45.0,45.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,20.0,True
 RMER__dBWML4,RMER,dBWML4,neuron_to_non_neuron_or_muscle,cook_si5_only,4.0,4.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,0.0,False
@@ -3558,7 +3558,7 @@ RMFL__AVKR,RMFL,AVKR,neuron_to_neuron,cook_si5_and_fenyves,14.0,14.0,14.0,Cook20
 RMFL__BAGL,RMFL,BAGL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 RMFL__DVC,RMFL,DVC,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 RMFL__PVT,RMFL,PVT,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,2.0,True
-RMFL__RIBR,RMFL,RIBR,neuron_to_neuron,fenyves_only,1.0,,1.0,Fenyves2020_only,+,+,fenyves_only_connection_with_sign,True,True,True,False,True,1.0,True
+RMFL__RIBR,RMFL,RIBR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 RMFL__RIMR,RMFL,RIMR,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,2.0,True
 RMFL__RIS,RMFL,RIS,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 RMFL__RMDR,RMFL,RMDR,neuron_to_neuron,cook_si5_and_fenyves,13.0,13.0,13.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,8.0,True
@@ -3737,7 +3737,7 @@ SAAVR__RIML,SAAVR,RIML,neuron_to_neuron,cook_si5_and_fenyves,12.0,12.0,12.0,Cook
 SAAVR__RIMR,SAAVR,RIMR,neuron_to_neuron,cook_si5_and_fenyves,7.0,7.0,7.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,3.0,True
 SAAVR__RIPL,SAAVR,RIPL,neuron_to_neuron,cook_si5_and_fenyves,12.0,12.0,12.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,3.0,True
 SAAVR__RMEV,SAAVR,RMEV,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,1.0,True
-SAAVR__SAAVR,SAAVR,SAAVR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,0.0,False
+SAAVR__SAAVR,SAAVR,SAAVR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 SAAVR__SABVL,SAAVR,SABVL,neuron_to_neuron,fenyves_only,2.0,,2.0,Fenyves2020_only,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,False,True,0.0,False
 SAAVR__SMBDL,SAAVR,SMBDL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 SAAVR__SMDDL,SAAVR,SMDDL,neuron_to_neuron,cook_si5_and_fenyves,17.0,17.0,17.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,9.0,True
@@ -4279,7 +4279,7 @@ URBL__SIAVL,URBL,SIAVL,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook201
 URBL__SIBVL,URBL,SIBVL,neuron_to_neuron,fenyves_only,1.0,,1.0,Fenyves2020_only,complex,complex,fenyves_only_connection_with_sign,True,True,True,False,True,0.0,False
 URBL__SMBDR,URBL,SMBDR,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 URBL__SMBVL,URBL,SMBVL,neuron_to_neuron,fenyves_only,1.0,,1.0,Fenyves2020_only,-,-,fenyves_only_connection_with_sign,True,True,True,False,True,0.0,False
-URBL__URBL,URBL,URBL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,0.0,False
+URBL__URBL,URBL,URBL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 URBL__URXL,URBL,URXL,neuron_to_neuron,cook_si5_and_fenyves,26.0,26.0,26.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,12.0,True
 URBL__URYDL,URBL,URYDL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 URBR__ADAR,URBR,ADAR,neuron_to_neuron,cook_si5_and_fenyves,5.0,5.0,5.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,2.0,True
@@ -4330,7 +4330,7 @@ URXL__RID,URXL,RID,neuron_to_neuron,cook_si5_only,1.0,1.0,,Cook2019_SI5,,-,missi
 URXL__RIGL,URXL,RIGL,neuron_to_neuron,cook_si5_and_fenyves,6.0,6.0,6.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,4.0,True
 URXL__RIR,URXL,RIR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 URXL__RMGL,URXL,RMGL,neuron_to_neuron,cook_si5_and_fenyves,5.0,5.0,5.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,5.0,True
-URXL__URXL,URXL,URXL,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,0.0,False
+URXL__URXL,URXL,URXL,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,2.0,True
 URXR__ADAR,URXR,ADAR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 URXR__ADFR,URXR,ADFR,neuron_to_neuron,cook_si5_and_fenyves,4.0,4.0,4.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,2.0,True
 URXR__ADLR,URXR,ADLR,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
@@ -4588,7 +4588,7 @@ VA12__AS11,VA12,AS11,neuron_to_neuron,cook_si5_and_fenyves,6.0,6.0,6.0,Cook2019_
 VA12__AVAL,VA12,AVAL,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,2.0,True
 VA12__DA08,VA12,DA08,neuron_to_neuron,cook_si5_and_fenyves,9.0,9.0,9.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,6.0,True
 VA12__DA09,VA12,DA09,neuron_to_neuron,cook_si5_and_fenyves,17.0,17.0,17.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,12.0,True
-VA12__DB07,VA12,DB07,neuron_to_neuron,fenyves_only,10.0,,10.0,Fenyves2020_only,+,+,fenyves_only_connection_with_sign,True,True,True,False,True,7.0,True
+VA12__DB07,VA12,DB07,neuron_to_neuron,cook_si5_and_fenyves,10.0,10.0,10.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,7.0,True
 VA12__DD06,VA12,DD06,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,2.0,True
 VA12__LUAL,VA12,LUAL,neuron_to_neuron,cook_si5_and_fenyves,2.0,2.0,2.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,2.0,True
 VA12__PHCR,VA12,PHCR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
@@ -4851,7 +4851,7 @@ VC05__HSNR,VC05,HSNR,neuron_to_neuron,cook_si5_and_fenyves,3.0,3.0,3.0,Cook2019_
 VC05__PVR,VC05,PVR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,0.0,False
 VC05__PVT,VC05,PVT,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 VC05__VC04,VC05,VC04,neuron_to_neuron,cook_si5_and_fenyves,4.0,4.0,4.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,4.0,True
-VC05__VC05,VC05,VC05,neuron_to_neuron,cook_si5_and_fenyves,6.0,6.0,6.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,0.0,False
+VC05__VC05,VC05,VC05,neuron_to_neuron,cook_si5_and_fenyves,6.0,6.0,6.0,Cook2019_SI5,+,+,fenyves_sign_prediction,True,True,True,True,True,5.0,True
 VC05__vBWML15,VC05,vBWML15,neuron_to_non_neuron_or_muscle,cook_si5_only,4.0,4.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,0.0,False
 VC05__vBWML16,VC05,vBWML16,neuron_to_non_neuron_or_muscle,cook_si5_only,1.0,1.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,0.0,False
 VC05__vm2AL,VC05,vm2AL,neuron_to_non_neuron_or_muscle,cook_si5_only,2.0,2.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,0.0,False
@@ -4875,7 +4875,7 @@ VD01__vBWML7,VD01,vBWML7,neuron_to_non_neuron_or_muscle,cook_si5_only,11.0,11.0,
 VD01__vBWML8,VD01,vBWML8,neuron_to_non_neuron_or_muscle,cook_si5_only,3.0,3.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,3.0,True
 VD02__AS01,VD02,AS01,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 VD02__AVEL,VD02,AVEL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,1.0,True
-VD02__DD01,VD02,DD01,neuron_to_neuron,fenyves_only,1.0,,1.0,Fenyves2020_only,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,False,True,1.0,True
+VD02__DD01,VD02,DD01,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
 VD02__VA02,VD02,VA02,neuron_to_neuron,cook_si5_and_fenyves,12.0,12.0,12.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,9.0,True
 VD02__VB02,VD02,VB02,neuron_to_neuron,cook_si5_and_fenyves,4.0,4.0,4.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,3.0,True
 VD02__vBWML7,VD02,vBWML7,neuron_to_non_neuron_or_muscle,cook_si5_only,2.0,2.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,1.0,True
@@ -4990,7 +4990,7 @@ VD13__PVCR,VD13,PVCR,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_
 VD13__PVWL,VD13,PVWL,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,-,-,fenyves_sign_prediction,True,True,True,True,True,1.0,True
 VD13__VA12,VD13,VA12,neuron_to_neuron,cook_si5_and_fenyves,11.0,11.0,11.0,Cook2019_SI5,complex,complex,fenyves_sign_prediction,True,True,True,True,True,9.0,True
 VD13__VD12,VD13,VD12,neuron_to_neuron,cook_si5_and_fenyves,1.0,1.0,1.0,Cook2019_SI5,no pred,-,fenyves_no_pred_default_inhibitory,True,True,True,True,True,1.0,True
-VD13__VD13,VD13,VD13,neuron_to_neuron,cook_si5_only,2.0,2.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,True,True,False,0.0,False
+VD13__VD13,VD13,VD13,neuron_to_neuron,cook_si5_only,2.0,2.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,True,True,False,1.0,True
 VD13__dBWMR22,VD13,dBWMR22,neuron_to_non_neuron_or_muscle,cook_si5_only,3.0,3.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,2.0,True
 VD13__vBWML19,VD13,vBWML19,neuron_to_non_neuron_or_muscle,cook_si5_only,1.0,1.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,1.0,True
 VD13__vBWML21,VD13,vBWML21,neuron_to_non_neuron_or_muscle,cook_si5_only,5.0,5.0,,Cook2019_SI5,,-,missing_fenyves_default_inhibitory,True,True,False,True,False,4.0,True

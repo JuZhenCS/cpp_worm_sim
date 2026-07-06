@@ -23,13 +23,13 @@ void CableSolver::resize_if_needed(std::size_t compartment_count) {
     cached_inverse_dt_ms_ = 0.0;
 }
 
-void CableSolver::advance_voltages(
+void CableSolver::advance_voltages( //根据当前所有 compartment 的电压、电容、漏电、轴向连接、通道电流和注入电流，求出下一时间步所有 compartment 的新电压。
     Cell& cell,
     double dt_ms,
     const std::vector<double>& injected_current_pA,
     const std::vector<double>& extra_conductance_nS,
     const std::vector<double>& extra_reversal_mV) {
-    const std::size_t n = cell.compartments.size();
+    const std::size_t n = cell.compartments.size(); // 读取 compartment 数量并检查输入
     if (injected_current_pA.size() != n) {
         throw std::runtime_error("Injected current vector size does not match compartment count");
     }

@@ -1,4 +1,4 @@
-#include "neuron/synapse_loader.hpp"
+#include "synapse/synapse_loader.hpp"
 
 #include <algorithm>
 #include <cmath>

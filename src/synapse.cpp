@@ -1,4 +1,4 @@
-#include "neuron/synapse.hpp"
+#include "synapse/synapse.hpp"
 
 #include <algorithm>
 #include <cmath>
@@ -9,7 +9,7 @@
 namespace neuron {
 namespace {
 
-constexpr double kMicroSiemensMillivoltToPicoamp = 1000.0;
+constexpr double kMicroSiemensMillivoltToPicoamp = 1000.0; // μS · mV → pA
 
 void require_neuron(const std::shared_ptr<NeuronModel>& neuron, const char* label) {
     if (!neuron) {
@@ -62,28 +62,28 @@ double GradedChemicalSynapse::s_inf(double v_pre_mV) const {
 }
 
 double GradedChemicalSynapse::update_and_current_pA(double dt_ms) {
-    if (dt_ms <= 0.0) {
-        throw std::runtime_error("Chemical component dt_ms must be positive");
+    if (dt_ms <= 0.0) { // 检查时间步长必须为正数
+        throw std::runtime_error("Chemical component dt_ms must be positive"); // 时间步长非法时抛出错误
     }
-    if (!active_) {
-        last_current_pA_ = 0.0;
-        return 0.0;
+    if (!active_) { // 如果这个化学突触没有启用
+        last_current_pA_ = 0.0; // 记录本次电流为 0
+        return 0.0; // 不产生电流，直接返回 0
     }
 
-    const double v_pre = pre_->voltage_mV(pre_compartment_);
-    const double v_post = post_->voltage_mV(post_compartment_);
-    s_ += dt_ms * (s_inf(v_pre) - s_) / config_.tau_ms;
-    s_ = std::clamp(s_, 0.0, 1.0);
+    const double v_pre = pre_->voltage_mV(pre_compartment_); // 读取前突触神经元指定 compartment 的电压
+    const double v_post = post_->voltage_mV(post_compartment_); // 读取后突触神经元指定 compartment 的电压
+    s_ += dt_ms * (s_inf(v_pre) - s_) / config_.tau_ms; // 按一阶动力学更新突触门控变量 s_
+    s_ = std::clamp(s_, 0.0, 1.0); // 把 s_ 限制在 0 到 1 之间
 
     // uS * mV = nA, so multiply by 1000 to inject pA into NeuronModel.
-    const double current = kMicroSiemensMillivoltToPicoamp * config_.g_uS * s_ * (config_.e_rev_mV - v_post);
-    last_current_pA_ = current;
-    const double abs_current = std::abs(current);
-    if (abs_current > peak_abs_current_pA_) {
-        peak_abs_current_pA_ = abs_current;
-        peak_current_pA_ = current;
+    const double current = kMicroSiemensMillivoltToPicoamp * config_.g_uS * s_ * (config_.e_rev_mV - v_post); // 计算本时间步的化学突触电流，单位 pA
+    last_current_pA_ = current; // 保存最近一次计算得到的电流
+    const double abs_current = std::abs(current); // 计算电流绝对值，方便统计峰值大小
+    if (abs_current > peak_abs_current_pA_) { // 如果当前绝对电流超过历史峰值
+        peak_abs_current_pA_ = abs_current; // 更新历史最大绝对电流
+        peak_current_pA_ = current; // 保存达到峰值时的带符号电流
     }
-    return current;
+    return current; // 返回本次计算得到的突触电流
 }
 
 void GradedChemicalSynapse::step(double dt_ms) {
@@ -92,7 +92,7 @@ void GradedChemicalSynapse::step(double dt_ms) {
 
 double GradedChemicalSynapse::apply_and_current_pA(double dt_ms) {
     const double current = update_and_current_pA(dt_ms);
-    post_->add_current_pA(post_compartment_, current);
+    post_->add_current_pA(post_compartment_, current); // add_current_pA(...)是神经元对象的函数，作用是把外部输入电流累加到指定 compartment，后面神经元 step() 更新电压时会用到这些输入电流。把这个化学突触产生的电流施加到后突触神经元的指定 compartment 上。
     return current;
 }
 
